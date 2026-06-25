@@ -2,7 +2,25 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { notify } from "@/shared/utils/toast";
 import { productsMockApi } from "../services/productsMockApi";
 import { productKeys } from "./useProducts";
-import type { ProductFormValues, ProductStatus } from "../types/product.types";
+import type {
+  AddVendorProductPayload,
+  ProductFormValues,
+  ProductStatus,
+} from "../types/product.types";
+
+/** Adds a Regal catalog product to the vendor's shop (guided add flow). */
+export const useAddVendorProduct = () => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (payload: AddVendorProductPayload) =>
+      productsMockApi.addFromCatalog(payload),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: productKeys.all });
+      notify.success("محصول به فروشگاه شما افزوده شد.");
+    },
+    onError: () => notify.error("افزودن محصول ناموفق بود."),
+  });
+};
 
 export const useCreateProduct = () => {
   const queryClient = useQueryClient();

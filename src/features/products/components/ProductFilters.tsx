@@ -40,6 +40,7 @@ const ProductFilters: FC<ProductFiltersProps> = ({ filters, onChange }) => (
     </div>
     <div className={styles.selects}>
       <Select
+        aria-label="فیلتر بر اساس وضعیت"
         options={statusOptions}
         value={filters.status}
         onChange={(event) =>
@@ -50,6 +51,7 @@ const ProductFilters: FC<ProductFiltersProps> = ({ filters, onChange }) => (
         }
       />
       <Select
+        aria-label="فیلتر بر اساس دسته‌بندی"
         options={categoryOptions}
         value={filters.category}
         onChange={(event) =>

@@ -1,0 +1,113 @@
+.step {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.title {
+  font-family: "bold";
+  font-size: var(--rg-fs-lg);
+  color: var(--rg-text);
+}
+
+.description {
+  font-size: var(--rg-fs-sm);
+  color: var(--rg-text-muted);
+  line-height: 1.7;
+}
+
+.summary {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 0;
+  border: 1px solid var(--rg-border);
+  border-radius: var(--rg-radius);
+  overflow: hidden;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid var(--rg-border);
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+.row dt {
+  font-size: var(--rg-fs-sm);
+  color: var(--rg-text-muted);
+}
+
+.row dd {
+  margin: 0;
+  font-family: "bold";
+  font-size: var(--rg-fs-sm);
+  color: var(--rg-text);
+  text-align: end;
+}
+
+.variants {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.variantsTitle {
+  font-family: "bold";
+  font-size: var(--rg-fs-md);
+  color: var(--rg-text);
+}
+
+.empty {
+  font-size: var(--rg-fs-sm);
+  color: var(--rg-text-soft);
+}
+
+.variantList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.variantItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 0.7rem 0.9rem;
+  background-color: var(--rg-surface-muted);
+  border: 1px solid var(--rg-border);
+  border-radius: var(--rg-radius-sm);
+}
+
+.variantName {
+  font-family: "bold";
+  font-size: var(--rg-fs-sm);
+  color: var(--rg-text);
+}
+
+.variantStock {
+  font-size: var(--rg-fs-xs);
+  color: var(--rg-text-muted);
+}
+
+.variantPrice {
+  margin-inline-start: auto;
+  font-size: var(--rg-fs-xs);
+  color: var(--rg-primary);
+}

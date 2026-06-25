@@ -7,7 +7,9 @@ import SignupPage from "@/features/auth/pages/SignupPage";
 import OnboardingPage from "@/features/onboarding/pages/OnboardingPage";
 import DashboardPage from "@/features/dashboard/pages/DashboardPage";
 import ProductsListPage from "@/features/products/pages/ProductsListPage";
+import AddProductPage from "@/features/products/pages/AddProductPage";
 import ProductFormPage from "@/features/products/pages/ProductFormPage";
+import ProductEditPage from "@/features/products/pages/ProductEditPage";
 import OrdersPage from "@/features/orders/pages/OrdersPage";
 import CollectionsPage from "@/features/collections/pages/CollectionsPage";
 import DiscountsPage from "@/features/discounts/pages/DiscountsPage";
@@ -38,8 +40,9 @@ const AppRoutes: FC = () => (
       <Route element={<VendorLayout />}>
         <Route path={paths.dashboard} element={<DashboardPage />} />
         <Route path={paths.products} element={<ProductsListPage />} />
-        <Route path={paths.productNew} element={<ProductFormPage />} />
-        <Route path={paths.productEditPattern} element={<ProductFormPage />} />
+        <Route path={paths.productNew} element={<AddProductPage />} />
+        <Route path={paths.productNewManual} element={<ProductFormPage />} />
+        <Route path={paths.productEditPattern} element={<ProductEditPage />} />
         <Route path={paths.orders} element={<OrdersPage />} />
         <Route
           path={paths.inventory}

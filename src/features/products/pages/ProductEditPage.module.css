@@ -1,0 +1,60 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+.back {
+  align-self: flex-start;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.sectionTitle {
+  font-family: "bold";
+  font-size: var(--rg-fs-md);
+  color: var(--rg-text);
+}
+
+.note {
+  font-size: var(--rg-fs-xs);
+  color: var(--rg-text-muted);
+}
+
+.divider {
+  height: 1px;
+  width: 100%;
+  background-color: var(--rg-border);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.75rem;
+  position: sticky;
+  bottom: 0;
+  padding: 1rem 1.25rem;
+  background-color: var(--rg-surface);
+  border: 1px solid var(--rg-border);
+  border-radius: var(--rg-radius);
+  box-shadow: var(--rg-shadow-sm);
+}
+
+@media screen and (max-width: 640px) {
+  .actions > * {
+    flex: 1;
+  }
+}

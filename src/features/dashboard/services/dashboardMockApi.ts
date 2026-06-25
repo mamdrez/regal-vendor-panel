@@ -3,10 +3,14 @@ import { getTotalStock } from "@/features/products/constants/productMeta";
 import { productsMockApi } from "@/features/products/services/productsMockApi";
 import type { Product } from "@/features/products/types/product.types";
 import type {
+  CategoryPerformanceItem,
   ChartPoint,
+  ConversionStat,
   DashboardAnalytics,
   DashboardMetric,
+  EngagementPoint,
   OperationalInsight,
+  PerformancePoint,
   ProductPerformanceItem,
 } from "../types/dashboard.types";
 
@@ -34,6 +38,51 @@ const revenueTrend: ChartPoint[] = [
   { label: "پنجشنبه", value: 35_100_000 },
   { label: "جمعه", value: 29_700_000 },
 ];
+
+const engagementTrend: EngagementPoint[] = visitTrend.map((point, index) => ({
+  label: point.label,
+  productViews: Math.round(point.value * 0.68),
+  profileViews: Math.round(point.value * 0.24),
+  linkClicks: Math.round(point.value * 0.08) + index,
+}));
+
+const performanceTrend: PerformancePoint[] = visitTrend.map((point, index) => ({
+  label: point.label,
+  visits: point.value,
+  revenue: revenueTrend[index]?.value ?? 0,
+}));
+
+const averageOrderTrend: ChartPoint[] = [
+  { label: "هفته ۱", value: 1_980_000 },
+  { label: "هفته ۲", value: 2_240_000 },
+  { label: "هفته ۳", value: 2_120_000 },
+  { label: "هفته ۴", value: 2_460_000 },
+  { label: "هفته ۵", value: 2_680_000 },
+  { label: "هفته ۶", value: 2_540_000 },
+];
+
+const buildCategoryPerformance = (products: Product[]): CategoryPerformanceItem[] => {
+  const grouped = new Map<string, CategoryPerformanceItem>();
+
+  products.forEach((product) => {
+    const category = product.categoryName || "سایر";
+    const revenue = product.soldCount * effectivePrice(product);
+    const orders = Math.round(product.soldCount * 0.6);
+    const current = grouped.get(category);
+
+    if (current) {
+      current.revenue += revenue;
+      current.orders += orders;
+    } else {
+      grouped.set(category, { category, revenue, orders });
+    }
+  });
+
+  return [...grouped.values()]
+    .filter((item) => item.revenue > 0)
+    .sort((a, b) => b.revenue - a.revenue)
+    .slice(0, 6);
+};
 
 const createProductViews = (product: Product, index: number): number =>
   product.soldCount * 8 + 240 - index * 18;
@@ -132,6 +181,15 @@ export const dashboardMockApi = {
     const shopLinkClicks = Math.round(totalVisits * 0.08);
     const conversionRate = Number(((totalOrders / totalVisits) * 100).toFixed(1));
     const averageOrderValue = Math.round(totalSales / totalOrders);
+    const activeShare = products.length
+      ? Math.round((activeProducts / products.length) * 100)
+      : 0;
+
+    const conversionStats: ConversionStat[] = [
+      { id: "profileCompletion", label: "تکمیل پروفایل", value: 86 },
+      { id: "activeProducts", label: "محصولات فعال", value: activeShare },
+      { id: "conversion", label: "نرخ تبدیل", value: conversionRate },
+    ];
 
     const overviewMetrics: DashboardMetric[] = [
       { id: "totalVisits", label: "بازدید کل", value: totalVisits, change: 12, format: "number" },
@@ -160,6 +218,11 @@ export const dashboardMockApi = {
       overviewMetrics,
       visitTrend,
       revenueTrend,
+      engagementTrend,
+      performanceTrend,
+      averageOrderTrend,
+      categoryPerformance: buildCategoryPerformance(products),
+      conversionStats,
       channelViews: [
         { label: "بازدید محصولات", value: productViews },
         { label: "بازدید پروفایل", value: profileViews },

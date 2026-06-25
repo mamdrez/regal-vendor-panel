@@ -13,15 +13,39 @@ interface ProductsListProps {
   onDelete: (product: Product) => void;
 }
 
-const Thumb: FC<{ product: Product }> = ({ product }) => (
-  <div className={styles.thumb}>
-    {product.images[0] ? (
-      <img src={product.images[0]} alt="" className={styles.thumbImg} />
-    ) : (
-      <Icon name="image" size={20} />
-    )}
-  </div>
-);
+type StockTone = "ok" | "low" | "out";
+
+const getStockTone = (stock: number): StockTone => {
+  if (stock <= 0) return "out";
+  if (stock < 5) return "low";
+  return "ok";
+};
+
+const getDiscountPercent = (product: Product): number | null => {
+  if (!product.discountPrice || product.discountPrice >= product.price)
+    return null;
+  return Math.round(
+    ((product.price - product.discountPrice) / product.price) * 100,
+  );
+};
+
+const Thumb: FC<{ product: Product }> = ({ product }) => {
+  const percent = getDiscountPercent(product);
+  return (
+    <div className={styles.thumb}>
+      {product.images[0] ? (
+        <img src={product.images[0]} alt="" className={styles.thumbImg} />
+      ) : (
+        <Icon name="image" size={20} />
+      )}
+      {percent !== null && (
+        <span className={styles.discountTag}>
+          {percent.toLocaleString("fa-IR")}٪−
+        </span>
+      )}
+    </div>
+  );
+};
 
 const PriceCell: FC<{ product: Product }> = ({ product }) => (
   <div className={styles.priceCell}>
@@ -38,42 +62,103 @@ const PriceCell: FC<{ product: Product }> = ({ product }) => (
   </div>
 );
 
+const StockCell: FC<{ product: Product; withLabel?: boolean }> = ({
+  product,
+  withLabel = false,
+}) => {
+  const stock = getTotalStock(product);
+  const tone = getStockTone(stock);
+  const text = tone === "out" ? "ناموجود" : `${formatNumber(stock)} عدد`;
+  return (
+    <span className={styles.stock} data-tone={tone}>
+      {tone === "low" && <Icon name="alert-triangle" size={14} />}
+      {withLabel && tone !== "out" ? `موجودی: ${text}` : text}
+    </span>
+  );
+};
+
+/** Compact icon actions used in the desktop table. */
 const RowActions: FC<{
   product: Product;
   onEdit: (id: string) => void;
   onToggleStatus: (product: Product) => void;
   onDelete: (product: Product) => void;
-}> = ({ product, onEdit, onToggleStatus, onDelete }) => (
-  <div className={styles.actions}>
-    <button
-      type="button"
-      className={styles.actionBtn}
-      onClick={() => onEdit(product.id)}
-      title="ویرایش"
-      aria-label="ویرایش"
-    >
-      <Icon name="edit" size={17} />
-    </button>
-    <button
-      type="button"
-      className={styles.actionBtn}
-      onClick={() => onToggleStatus(product)}
-      title={product.status === "inactive" ? "فعال‌سازی" : "غیرفعال‌سازی"}
-      aria-label="تغییر وضعیت"
-    >
-      <Icon name="power" size={17} />
-    </button>
-    <button
-      type="button"
-      className={`${styles.actionBtn} ${styles.danger}`}
-      onClick={() => onDelete(product)}
-      title="حذف"
-      aria-label="حذف"
-    >
-      <Icon name="trash" size={17} />
-    </button>
-  </div>
-);
+}> = ({ product, onEdit, onToggleStatus, onDelete }) => {
+  const toggleLabel =
+    product.status === "inactive" ? "فعال‌سازی" : "غیرفعال‌سازی";
+  return (
+    <div className={styles.actions}>
+      <button
+        type="button"
+        className={styles.actionBtn}
+        onClick={() => onEdit(product.id)}
+        title="ویرایش"
+        aria-label={`ویرایش ${product.title}`}
+      >
+        <Icon name="edit" size={17} />
+      </button>
+      <button
+        type="button"
+        className={styles.actionBtn}
+        onClick={() => onToggleStatus(product)}
+        title={toggleLabel}
+        aria-label={`${toggleLabel} ${product.title}`}
+      >
+        <Icon name="power" size={17} />
+      </button>
+      <button
+        type="button"
+        className={`${styles.actionBtn} ${styles.danger}`}
+        onClick={() => onDelete(product)}
+        title="حذف"
+        aria-label={`حذف ${product.title}`}
+      >
+        <Icon name="trash" size={17} />
+      </button>
+    </div>
+  );
+};
+
+/** Larger, labelled actions used in the mobile cards for better tap UX. */
+const MobileActions: FC<{
+  product: Product;
+  onEdit: (id: string) => void;
+  onToggleStatus: (product: Product) => void;
+  onDelete: (product: Product) => void;
+}> = ({ product, onEdit, onToggleStatus, onDelete }) => {
+  const toggleLabel =
+    product.status === "inactive" ? "فعال‌سازی" : "غیرفعال‌سازی";
+  return (
+    <div className={styles.mobileActions}>
+      <button
+        type="button"
+        className={styles.mobileBtn}
+        onClick={() => onEdit(product.id)}
+      >
+        <Icon name="edit" size={18} />
+        <span>ویرایش</span>
+      </button>
+      <button
+        type="button"
+        className={styles.mobileBtn}
+        onClick={() => onToggleStatus(product)}
+        aria-label={`${toggleLabel} ${product.title}`}
+      >
+        <Icon name="power" size={18} />
+        <span>{toggleLabel}</span>
+      </button>
+      <button
+        type="button"
+        className={`${styles.mobileBtn} ${styles.danger}`}
+        onClick={() => onDelete(product)}
+        aria-label={`حذف ${product.title}`}
+      >
+        <Icon name="trash" size={18} />
+        <span>حذف</span>
+      </button>
+    </div>
+  );
+};
 
 const ProductsList: FC<ProductsListProps> = ({
   products,
@@ -85,15 +170,18 @@ const ProductsList: FC<ProductsListProps> = ({
     {/* Desktop / tablet table */}
     <div className={styles.tableWrap}>
       <table className={styles.table}>
+        <caption className={styles.srOnly}>فهرست محصولات فروشگاه</caption>
         <thead>
           <tr>
-            <th>محصول</th>
-            <th>برند</th>
-            <th>دسته‌بندی</th>
-            <th>قیمت</th>
-            <th>موجودی</th>
-            <th>وضعیت</th>
-            <th className={styles.actionsHead}>عملیات</th>
+            <th scope="col">محصول</th>
+            <th scope="col">برند</th>
+            <th scope="col">دسته‌بندی</th>
+            <th scope="col">قیمت</th>
+            <th scope="col">موجودی</th>
+            <th scope="col">وضعیت</th>
+            <th scope="col" className={styles.actionsHead}>
+              عملیات
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -102,7 +190,13 @@ const ProductsList: FC<ProductsListProps> = ({
               <td>
                 <div className={styles.productCell}>
                   <Thumb product={product} />
-                  <span className={styles.productTitle}>{product.title}</span>
+                  <button
+                    type="button"
+                    className={styles.productTitleBtn}
+                    onClick={() => onEdit(product.id)}
+                  >
+                    {product.title}
+                  </button>
                 </div>
               </td>
               <td>{product.brandName}</td>
@@ -111,9 +205,7 @@ const ProductsList: FC<ProductsListProps> = ({
                 <PriceCell product={product} />
               </td>
               <td>
-                <span className={styles.stock}>
-                  {formatNumber(getTotalStock(product))} عدد
-                </span>
+                <StockCell product={product} />
               </td>
               <td>
                 <ProductStatusBadge status={product.status} />
@@ -133,36 +225,43 @@ const ProductsList: FC<ProductsListProps> = ({
     </div>
 
     {/* Mobile cards */}
-    <div className={styles.cards}>
+    <ul className={styles.cards}>
       {products.map((product) => (
-        <div key={product.id} className={styles.card}>
+        <li key={product.id} className={styles.card}>
           <div className={styles.cardTop}>
             <Thumb product={product} />
             <div className={styles.cardInfo}>
-              <span className={styles.productTitle}>{product.title}</span>
+              <button
+                type="button"
+                className={styles.productTitleBtn}
+                onClick={() => onEdit(product.id)}
+              >
+                {product.title}
+              </button>
               <span className={styles.cardMeta}>
                 {product.brandName} • {product.categoryName}
               </span>
-              <PriceCell product={product} />
+              <div className={styles.cardBadges}>
+                <ProductStatusBadge status={product.status} />
+                <StockCell product={product} withLabel />
+              </div>
             </div>
           </div>
-          <div className={styles.cardBottom}>
-            <div className={styles.cardBottomInfo}>
-              <ProductStatusBadge status={product.status} />
-              <span className={styles.stock}>
-                موجودی: {formatNumber(getTotalStock(product))}
-              </span>
-            </div>
-            <RowActions
-              product={product}
-              onEdit={onEdit}
-              onToggleStatus={onToggleStatus}
-              onDelete={onDelete}
-            />
+
+          <div className={styles.cardPrice}>
+            <span className={styles.cardPriceLabel}>قیمت فروش</span>
+            <PriceCell product={product} />
           </div>
-        </div>
+
+          <MobileActions
+            product={product}
+            onEdit={onEdit}
+            onToggleStatus={onToggleStatus}
+            onDelete={onDelete}
+          />
+        </li>
       ))}
-    </div>
+    </ul>
   </>
 );
 

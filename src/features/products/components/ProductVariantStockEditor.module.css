@@ -1,0 +1,141 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.title {
+  display: block;
+  font-family: "bold";
+  font-size: 0.92rem;
+  color: var(--rg-text);
+}
+
+.subtitle {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: var(--rg-fs-xs);
+  color: var(--rg-text-muted);
+}
+
+.suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.suggestLabel {
+  font-size: var(--rg-fs-xs);
+  color: var(--rg-text-muted);
+}
+
+.chip {
+  font-size: var(--rg-fs-xs);
+  color: var(--rg-text);
+  background-color: var(--rg-surface-muted);
+  border: 1px solid var(--rg-border-strong);
+  border-radius: var(--rg-radius-pill);
+  padding: 0.25rem 0.7rem;
+  cursor: pointer;
+  transition: background-color 0.16s ease, border-color 0.16s ease;
+}
+
+.chip:hover {
+  background-color: var(--rg-primary-tint);
+  border-color: var(--rg-primary);
+  color: var(--rg-primary);
+}
+
+.empty {
+  font-family: "regular";
+  font-size: 0.85rem;
+  color: var(--rg-text-soft);
+  background-color: var(--rg-surface-muted);
+  border: 1px dashed var(--rg-border-strong);
+  border-radius: var(--rg-radius-sm);
+  padding: 0.9rem 1rem;
+  line-height: 1.7;
+}
+
+.rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 0.9fr 1.3fr 0.9fr 1fr auto;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.header {
+  font-size: var(--rg-fs-xs);
+  color: var(--rg-text-muted);
+  padding: 0 0.25rem;
+}
+
+.header span {
+  padding-inline-start: 0.2rem;
+}
+
+.remove {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50%;
+  color: var(--rg-text-muted);
+  cursor: pointer;
+  transition: background-color 0.16s ease, color 0.16s ease;
+  flex-shrink: 0;
+}
+
+.remove:hover {
+  background-color: var(--rg-primary-tint);
+  color: var(--rg-primary);
+}
+
+@media screen and (max-width: 860px) {
+  .header {
+    display: none;
+  }
+  .row {
+    grid-template-columns: 1fr 1fr auto;
+    grid-template-areas:
+      "color size remove"
+      "sku sku remove"
+      "stock price remove";
+    padding: 0.85rem;
+    background-color: var(--rg-surface-muted);
+    border-radius: var(--rg-radius-sm);
+  }
+  .row > :nth-child(1) {
+    grid-area: color;
+  }
+  .row > :nth-child(2) {
+    grid-area: size;
+  }
+  .row > :nth-child(3) {
+    grid-area: sku;
+  }
+  .row > :nth-child(4) {
+    grid-area: stock;
+  }
+  .row > :nth-child(5) {
+    grid-area: price;
+  }
+  .row > .remove {
+    grid-area: remove;
+  }
+}

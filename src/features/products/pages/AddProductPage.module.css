@@ -1,0 +1,38 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+.back {
+  align-self: flex-start;
+}
+
+.stepperCard {
+  width: 100%;
+}
+
+.content {
+  width: 100%;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  position: sticky;
+  bottom: 0;
+  padding: 1rem 1.25rem;
+  background-color: var(--rg-surface);
+  border: 1px solid var(--rg-border);
+  border-radius: var(--rg-radius);
+  box-shadow: var(--rg-shadow-sm);
+}
+
+@media screen and (max-width: 640px) {
+  .actions > * {
+    flex: 1;
+  }
+}

@@ -5,7 +5,10 @@ export const paths = {
   onboarding: "/onboarding",
   dashboard: "/",
   products: "/products",
+  /** Guided, catalog-based add product flow. */
   productNew: "/products/new",
+  /** Secondary manual product creation (product not in the catalog). */
+  productNewManual: "/products/new/manual",
   /** Route pattern used in route definitions. */
   productEditPattern: "/products/:productId/edit",
   /** Builds an edit link for a specific product. */

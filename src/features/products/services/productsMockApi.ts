@@ -1,5 +1,6 @@
 import { delay } from "@/shared/utils/delay";
 import type {
+  AddVendorProductPayload,
   Product,
   ProductFilters,
   ProductFormValues,
@@ -174,6 +175,33 @@ export const productsMockApi = {
     const product: Product = {
       ...values,
       id: createId("prod"),
+      soldCount: 0,
+      createdAt: now(),
+      updatedAt: now(),
+    };
+    write([product, ...read()]);
+    return product;
+  },
+
+  /** Adds a Regal catalog product to the vendor shop with selling data. */
+  async addFromCatalog(payload: AddVendorProductPayload): Promise<Product> {
+    await delay(700);
+    const { catalogItem, selling } = payload;
+    const product: Product = {
+      id: createId("prod"),
+      title: catalogItem.title,
+      brandName: catalogItem.brandName,
+      categoryName: catalogItem.categoryName,
+      description: catalogItem.description ?? "",
+      images: catalogItem.images,
+      price: selling.price,
+      discountPrice: selling.discountPrice,
+      status: selling.status,
+      variants: selling.variants,
+      sellerNote: selling.sellerNote,
+      catalogItemId: catalogItem.id,
+      brandId: catalogItem.brandId,
+      source: catalogItem.source,
       soldCount: 0,
       createdAt: now(),
       updatedAt: now(),

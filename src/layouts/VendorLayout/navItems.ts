@@ -11,10 +11,10 @@ export interface NavItem {
 export const navItems: NavItem[] = [
   { label: "داشبورد", path: paths.dashboard, icon: "dashboard" },
   { label: "محصولات", path: paths.products, icon: "products" },
+  { label: "پروفایل", path: paths.shopProfile, icon: "shop" },
   { label: "سفارش‌ها", path: paths.orders, icon: "orders" },
   { label: "کالکشن‌ها", path: paths.collections, icon: "collections" },
   { label: "تخفیف‌ها", path: paths.discounts, icon: "discounts" },
-  { label: "پروفایل", path: paths.shopProfile, icon: "shop" },
   { label: "اعلان‌ها", path: paths.notifications, icon: "bell" },
 ];
 

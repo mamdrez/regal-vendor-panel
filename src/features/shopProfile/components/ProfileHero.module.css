@@ -10,6 +10,7 @@
   position: relative;
   max-height: 14rem;
   background: var(--rg-surface-muted);
+  overflow: hidden;
 }
 
 .coverImage {
@@ -77,7 +78,6 @@
   align-items: center;
   justify-content: center;
   color: var(--rg-primary);
-  background: var(--rg-primary-tint);
 }
 
 .identity {

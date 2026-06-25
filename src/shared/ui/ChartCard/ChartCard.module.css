@@ -1,0 +1,108 @@
+.card {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.heading {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  min-width: 0;
+}
+
+.iconBox {
+  width: 2.25rem;
+  height: 2.25rem;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--rg-radius-sm);
+  background: var(--rg-primary-tint);
+  color: var(--rg-primary);
+}
+
+.titles {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.title {
+  font-family: "bold";
+  font-size: 1rem;
+  color: var(--rg-text);
+}
+
+.description {
+  font-family: "regular";
+  font-size: 0.78rem;
+  line-height: 1.6;
+  color: var(--rg-text-muted);
+}
+
+.action {
+  flex-shrink: 0;
+}
+
+.chartArea {
+  width: 100%;
+  min-width: 0;
+}
+
+.sm {
+  height: 13rem;
+}
+
+.md {
+  height: 17rem;
+}
+
+.lg {
+  height: 21rem;
+}
+
+.insight {
+  margin: 0;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--rg-border);
+  font-family: "regular";
+  font-size: 0.8rem;
+  line-height: 1.7;
+  color: var(--rg-text-muted);
+}
+
+@media screen and (max-width: 860px) {
+  .sm {
+    height: 12rem;
+  }
+
+  .md {
+    height: 15rem;
+  }
+
+  .lg {
+    height: 17rem;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .head {
+    flex-direction: column;
+  }
+
+  .md,
+  .lg {
+    height: 14rem;
+  }
+}

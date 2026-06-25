@@ -1,0 +1,48 @@
+.tooltip {
+  min-width: 9rem;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--rg-border);
+  border-radius: var(--rg-radius-sm);
+  background: var(--rg-surface);
+  box-shadow: var(--rg-shadow-md);
+}
+
+.label {
+  display: block;
+  margin-bottom: 0.45rem;
+  font-family: "bold";
+  font-size: 0.78rem;
+  color: var(--rg-text);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: "regular";
+  font-size: 0.78rem;
+  color: var(--rg-text-muted);
+}
+
+.dot {
+  width: 0.6rem;
+  height: 0.6rem;
+  flex-shrink: 0;
+  border-radius: 50%;
+}
+
+.name {
+  color: var(--rg-text-muted);
+}
+
+.value {
+  margin-inline-start: auto;
+  font-family: "bold";
+  color: var(--rg-text);
+}

@@ -1,0 +1,130 @@
+.formStack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.imageGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: 1rem;
+}
+
+.hint {
+  font-family: "regular";
+  font-size: 0.82rem;
+  line-height: 1.85;
+  color: var(--rg-text-muted);
+}
+
+.error {
+  font-family: "regular";
+  font-size: 0.82rem;
+  color: var(--rg-error);
+}
+
+.checkRow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: "regular";
+  font-size: 0.88rem;
+  color: var(--rg-text);
+  cursor: pointer;
+}
+
+.checkRow input {
+  width: 1.1rem;
+  height: 1.1rem;
+  accent-color: var(--rg-primary);
+}
+
+/* Toggle list used by security & notification settings forms */
+.toggleList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.toggleRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--rg-border);
+  border-radius: var(--rg-radius);
+  background: var(--rg-surface-muted);
+}
+
+.toggleText strong {
+  display: block;
+  font-family: "bold";
+  font-size: 0.9rem;
+  color: var(--rg-text);
+}
+
+.toggleText span {
+  display: block;
+  margin-top: 0.25rem;
+  font-family: "regular";
+  font-size: 0.8rem;
+  line-height: 1.8;
+  color: var(--rg-text-muted);
+}
+
+.switch {
+  position: relative;
+  flex-shrink: 0;
+  width: 2.75rem;
+  height: 1.6rem;
+  border-radius: var(--rg-radius-pill);
+  border: 0;
+  padding: 0;
+  background: var(--rg-border-strong);
+  cursor: pointer;
+  transition: background-color 0.18s ease;
+}
+
+.switch::after {
+  content: "";
+  position: absolute;
+  top: 0.2rem;
+  inset-inline-start: 0.2rem;
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 50%;
+  background: var(--rg-surface);
+  box-shadow: var(--rg-shadow-sm);
+  transition: transform 0.18s ease;
+}
+
+.switchOn {
+  background: var(--rg-primary);
+}
+
+.switchOn::after {
+  transform: translateX(-1.15rem);
+}
+
+@media screen and (max-width: 640px) {
+  .grid,
+  .imageGrid {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+
+  .formStack {
+    gap: 0.95rem;
+  }
+
+  .toggleRow {
+    padding: 0.8rem;
+  }
+}

@@ -33,75 +33,18 @@
   gap: 1rem;
 }
 
-.card {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  padding: 1rem;
-  border: 1px solid var(--rg-border);
-  border-radius: var(--rg-radius);
-  background: var(--rg-surface);
-}
+@media screen and (max-width: 720px) {
+  .title {
+    font-size: 0.98rem;
+  }
 
-.cardHeader {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 0.8rem;
-}
-
-.branchName {
-  font-family: "bold";
-  font-size: 0.98rem;
-  color: var(--rg-text);
-}
-
-.city {
-  margin-top: 0.2rem;
-  font-family: "regular";
-  font-size: 0.82rem;
-  color: var(--rg-text-muted);
-}
-
-.details {
-  display: flex;
-  flex-direction: column;
-  gap: 0.55rem;
-}
-
-.details span {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.5rem;
-  font-family: "regular";
-  font-size: 0.83rem;
-  line-height: 1.75;
-  color: var(--rg-text-muted);
-}
-
-.details svg {
-  flex-shrink: 0;
-  margin-top: 0.2rem;
-  color: var(--rg-text-soft);
-}
-
-.actions {
-  display: flex;
-  align-items: center;
-  gap: 0.45rem;
-  flex-wrap: wrap;
-  margin-top: auto;
-  padding-top: 0.75rem;
-  border-top: 1px solid var(--rg-border);
-}
-
-.removeButton {
-  color: var(--error);
+  .subtitle {
+    font-size: 0.8rem;
+  }
 }
 
 @media screen and (max-width: 560px) {
-  .header > button,
-  .actions > button {
+  .header > button {
     width: 100%;
   }
 

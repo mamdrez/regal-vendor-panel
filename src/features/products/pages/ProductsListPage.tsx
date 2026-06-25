@@ -150,12 +150,17 @@ const ProductsListPage: FC = () => {
     }
 
     return (
-      <ProductsList
-        products={visibleProducts}
-        onEdit={(id) => navigate(paths.productEdit(id))}
-        onToggleStatus={handleToggleStatus}
-        onDelete={setToDelete}
-      />
+      <div className={styles.results}>
+        <p className={styles.resultCount} aria-live="polite">
+          {visibleProducts.length.toLocaleString("fa-IR")} محصول
+        </p>
+        <ProductsList
+          products={visibleProducts}
+          onEdit={(id) => navigate(paths.productEdit(id))}
+          onToggleStatus={handleToggleStatus}
+          onDelete={setToDelete}
+        />
+      </div>
     );
   };
 

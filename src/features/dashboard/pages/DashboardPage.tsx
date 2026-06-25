@@ -4,6 +4,7 @@ import {
   Badge,
   Button,
   Card,
+  ChartCard,
   EmptyState,
   Icon,
   LoadingState,
@@ -14,8 +15,20 @@ import { paths } from "@/routers/paths";
 import { formatNumber, formatPrice } from "@/shared/utils/format";
 import { useAuth } from "@/features/auth/hooks/useAuth";
 import StatCard, { type StatTone } from "../components/StatCard";
+import {
+  AverageOrderValueChart,
+  CategoryPerformanceBarChart,
+  ConversionRadialChart,
+  EngagementAreaChart,
+  OrderStatusPieChart,
+  ProductBarChart,
+  RevenueAreaChart,
+  VendorPerformanceComposedChart,
+  VisitsLineChart,
+} from "../components/charts";
+import { chartColors } from "../components/charts/chartTheme";
 import { useDashboardAnalytics } from "../hooks/useDashboardAnalytics";
-import type { ChartPoint, DashboardMetric } from "../types/dashboard.types";
+import type { DashboardMetric } from "../types/dashboard.types";
 import styles from "./DashboardPage.module.css";
 
 const metricIcons: Record<string, IconName> = {
@@ -40,63 +53,6 @@ const formatMetricValue = (metric: DashboardMetric): string => {
   if (metric.format === "price") return formatPrice(metric.value);
   if (metric.format === "percent") return `${metric.value.toLocaleString("fa-IR")}٪`;
   return formatNumber(metric.value);
-};
-
-const BarChart: FC<{ title: string; data: ChartPoint[]; format?: "number" | "price" }> = ({
-  title,
-  data,
-  format = "number",
-}) => {
-  const max = Math.max(...data.map((point) => point.value), 1);
-
-  return (
-    <Card padding="lg" className={styles.chartCard}>
-      <div className={styles.sectionHead}>
-        <h3 className={styles.sectionTitle}>{title}</h3>
-        <Icon name="trending-up" size={18} />
-      </div>
-      <div className={styles.chart}>
-        {data.map((point) => (
-          <div key={point.label} className={styles.barItem}>
-            <span className={styles.barValue}>
-              {format === "price" ? formatPrice(point.value) : formatNumber(point.value)}
-            </span>
-            <span
-              className={styles.bar}
-              style={{ blockSize: `${Math.max(12, (point.value / max) * 100)}%` }}
-            />
-            <span className={styles.barLabel}>{point.label}</span>
-          </div>
-        ))}
-      </div>
-    </Card>
-  );
-};
-
-const HorizontalBars: FC<{ title: string; data: ChartPoint[] }> = ({ title, data }) => {
-  const max = Math.max(...data.map((point) => point.value), 1);
-
-  return (
-    <Card padding="lg" className={styles.section}>
-      <div className={styles.sectionHead}>
-        <h3 className={styles.sectionTitle}>{title}</h3>
-        <Icon name="analytics" size={18} />
-      </div>
-      <div className={styles.horizontalBars}>
-        {data.map((point) => (
-          <div key={point.label} className={styles.horizontalRow}>
-            <div className={styles.horizontalMeta}>
-              <span>{point.label}</span>
-              <strong>{formatNumber(point.value)}</strong>
-            </div>
-            <div className={styles.horizontalTrack}>
-              <span style={{ inlineSize: `${(point.value / max) * 100}%` }} />
-            </div>
-          </div>
-        ))}
-      </div>
-    </Card>
-  );
 };
 
 const DashboardPage: FC = () => {
@@ -180,70 +136,112 @@ const DashboardPage: FC = () => {
           </div>
 
           <div className={styles.chartGrid}>
-            <BarChart title="روند بازدید ۷ روز اخیر" data={data.visitTrend} />
-            <BarChart title="روند فروش mock" data={data.revenueTrend} format="price" />
+            <ChartCard
+              title="روند بازدید روزانه"
+              description="بازدید فروشگاه در ۷ روز اخیر"
+              icon="eye"
+              insight="بازدیدها در نیمه دوم هفته رشد محسوسی داشته است."
+            >
+              <VisitsLineChart data={data.visitTrend} />
+            </ChartCard>
+
+            <ChartCard
+              title="روند فروش"
+              description="درآمد روزانه فروشگاه (mock)"
+              icon="wallet"
+              insight="بیشترین فروش در روز پنجشنبه ثبت شده است."
+            >
+              <RevenueAreaChart data={data.revenueTrend} />
+            </ChartCard>
           </div>
 
-          <div className={styles.sections}>
-            <HorizontalBars title="کانال‌های بازدید" data={data.channelViews} />
+          <ChartCard
+            title="بازدید و فروش"
+            description="مقایسهٔ بازدید روزانه با درآمد فروشگاه"
+            icon="analytics"
+            size="lg"
+            insight="رشد بازدید با افزایش فروش همسو بوده است."
+          >
+            <VendorPerformanceComposedChart data={data.performanceTrend} />
+          </ChartCard>
 
-            <Card padding="lg" className={styles.section}>
-              <div className={styles.sectionHead}>
-                <h3 className={styles.sectionTitle}>وضعیت سفارش‌ها</h3>
-                <Icon name="orders" size={18} />
-              </div>
-              <div className={styles.statusGrid}>
-                {data.orderStatusSummary.map((item) => (
-                  <div key={item.status} className={styles.statusCard}>
-                    <span>{item.status}</span>
-                    <strong>{formatNumber(item.count)}</strong>
-                  </div>
-                ))}
-              </div>
-            </Card>
+          <div className={styles.chartGrid}>
+            <ChartCard
+              title="روند تعامل با فروشگاه"
+              description="بازدید محصولات، بازدید پروفایل و کلیک روی لینک فروشگاه"
+              icon="trending-up"
+              insight="بازدید محصولات نسبت به هفته گذشته رشد داشته است."
+            >
+              <EngagementAreaChart data={data.engagementTrend} />
+            </ChartCard>
+
+            <ChartCard
+              title="سهم سفارش‌ها بر اساس وضعیت"
+              description="توزیع سفارش‌ها در مراحل مختلف پردازش"
+              icon="orders"
+              insight="بیشتر سفارش‌ها در مرحلهٔ ارسال شده قرار دارند."
+            >
+              <OrderStatusPieChart data={data.orderStatusSummary} />
+            </ChartCard>
           </div>
 
-          <div className={styles.sections}>
-            <Card padding="lg" className={styles.section}>
-              <div className={styles.sectionHead}>
-                <h3 className={styles.sectionTitle}>محصولات پربازدید</h3>
-                <Icon name="eye" size={18} />
-              </div>
-              <ul className={styles.list}>
-                {data.mostViewedProducts.map((product, index) => (
-                  <li key={product.id} className={styles.listRow}>
-                    <span className={styles.rank}>{formatNumber(index + 1)}</span>
-                    <div className={styles.rowInfo}>
-                      <span className={styles.rowTitle}>{product.title}</span>
-                      <span className={styles.rowMeta}>
-                        {formatNumber(product.views ?? 0)} بازدید، {formatNumber(product.soldCount ?? 0)} فروش
-                      </span>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </Card>
+          <div className={styles.chartGrid}>
+            <ChartCard
+              title="پرفروش‌ترین محصولات"
+              description="پنج محصول برتر بر اساس تعداد فروش"
+              icon="trending-up"
+            >
+              <ProductBarChart
+                data={data.bestSellingProducts}
+                metric="soldCount"
+                color={chartColors.purple}
+                valueFormatter={(value) => `${formatNumber(value)} فروش`}
+              />
+            </ChartCard>
 
-            <Card padding="lg" className={styles.section}>
-              <div className={styles.sectionHead}>
-                <h3 className={styles.sectionTitle}>محصولات پرفروش</h3>
-                <Icon name="trending-up" size={18} />
-              </div>
-              <ul className={styles.list}>
-                {data.bestSellingProducts.map((product, index) => (
-                  <li key={product.id} className={styles.listRow}>
-                    <span className={styles.rank}>{formatNumber(index + 1)}</span>
-                    <div className={styles.rowInfo}>
-                      <span className={styles.rowTitle}>{product.title}</span>
-                      <span className={styles.rowMeta}>
-                        {formatNumber(product.soldCount ?? 0)} فروش، {formatPrice(product.revenue ?? 0)}
-                      </span>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </Card>
+            <ChartCard
+              title="پربازدیدترین محصولات"
+              description="پنج محصول برتر بر اساس بازدید"
+              icon="eye"
+            >
+              <ProductBarChart
+                data={data.mostViewedProducts}
+                metric="views"
+                color={chartColors.blue}
+                valueFormatter={(value) => `${formatNumber(value)} بازدید`}
+              />
+            </ChartCard>
           </div>
+
+          <div className={styles.chartGrid}>
+            <ChartCard
+              title="عملکرد دسته‌بندی‌ها"
+              description="مقایسهٔ درآمد بر اساس دسته‌بندی محصولات"
+              icon="dashboard"
+              insight="دسته‌بندی برتر بیشترین سهم درآمد را به خود اختصاص داده است."
+            >
+              <CategoryPerformanceBarChart data={data.categoryPerformance} />
+            </ChartCard>
+
+            <ChartCard
+              title="شاخص‌های کلیدی"
+              description="نرخ تبدیل، تکمیل پروفایل و درصد محصولات فعال"
+              icon="percent"
+              insight="تکمیل پروفایل فروشگاه به بهبود اعتماد خریداران کمک می‌کند."
+            >
+              <ConversionRadialChart data={data.conversionStats} />
+            </ChartCard>
+          </div>
+
+          <ChartCard
+            title="میانگین ارزش سفارش"
+            description="روند میانگین ارزش هر سفارش در هفته‌های اخیر (mock)"
+            icon="wallet"
+            size="sm"
+            insight="میانگین ارزش سفارش روندی صعودی داشته است."
+          >
+            <AverageOrderValueChart data={data.averageOrderTrend} />
+          </ChartCard>
 
           <div className={styles.sections}>
             <Card padding="lg" className={styles.section}>

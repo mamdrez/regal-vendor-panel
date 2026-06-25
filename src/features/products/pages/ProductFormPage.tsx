@@ -1,14 +1,10 @@
 import type { FC } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { Button, Icon, LoadingState, PageHeader, EmptyState } from "@/shared/ui";
+import { useNavigate } from "react-router-dom";
+import { Button, Icon, PageHeader } from "@/shared/ui";
 import { paths } from "@/routers/paths";
 import ProductForm from "../components/ProductForm";
-import { useProduct } from "../hooks/useProducts";
-import {
-  useCreateProduct,
-  useUpdateProduct,
-} from "../hooks/useProductMutations";
-import type { Product, ProductFormValues } from "../types/product.types";
+import { useCreateProduct } from "../hooks/useProductMutations";
+import type { ProductFormValues } from "../types/product.types";
 import styles from "./ProductFormPage.module.css";
 
 const emptyValues: ProductFormValues = {
@@ -23,92 +19,39 @@ const emptyValues: ProductFormValues = {
   variants: [],
 };
 
-const toFormValues = (product: Product): ProductFormValues => ({
-  title: product.title,
-  brandName: product.brandName,
-  categoryName: product.categoryName,
-  description: product.description,
-  images: product.images,
-  price: product.price,
-  discountPrice: product.discountPrice,
-  status: product.status,
-  variants: product.variants,
-});
-
+/**
+ * Secondary, manual product creation — used when a product is not available
+ * in the Regal brand catalog. The primary add flow is the guided catalog
+ * experience in {@link AddProductPage}.
+ */
 const ProductFormPage: FC = () => {
   const navigate = useNavigate();
-  const { productId } = useParams<{ productId: string }>();
-  const isEdit = Boolean(productId);
-
-  const productQuery = useProduct(productId);
   const createProduct = useCreateProduct();
-  const updateProduct = useUpdateProduct(productId ?? "");
 
   const goToList = () => navigate(paths.products);
+  const goToGuided = () => navigate(paths.productNew);
 
   const handleSubmit = (values: ProductFormValues) => {
-    if (isEdit) {
-      updateProduct.mutate(values, { onSuccess: goToList });
-    } else {
-      createProduct.mutate(values, { onSuccess: goToList });
-    }
+    createProduct.mutate(values, { onSuccess: goToList });
   };
-
-  const backButton = (
-    <Button
-      variant="ghost"
-      leadingIcon={<Icon name="arrow-right" size={18} />}
-      onClick={goToList}
-    >
-      بازگشت به محصولات
-    </Button>
-  );
-
-  if (isEdit && productQuery.isLoading) {
-    return (
-      <div className={styles.page}>
-        {backButton}
-        <LoadingState fullHeight label="در حال بارگذاری محصول..." />
-      </div>
-    );
-  }
-
-  if (isEdit && productQuery.isError) {
-    return (
-      <div className={styles.page}>
-        {backButton}
-        <EmptyState
-          title="محصول یافت نشد"
-          description="محصول مورد نظر وجود ندارد یا حذف شده است."
-          action={
-            <Button variant="outline" onClick={goToList}>
-              بازگشت به فهرست
-            </Button>
-          }
-        />
-      </div>
-    );
-  }
 
   return (
     <div className={styles.page}>
-      {backButton}
+      <Button
+        variant="ghost"
+        leadingIcon={<Icon name="arrow-right" size={18} />}
+        onClick={goToGuided}
+      >
+        بازگشت به انتخاب از کاتالوگ
+      </Button>
       <PageHeader
-        title={isEdit ? "ویرایش محصول" : "افزودن محصول"}
-        description={
-          isEdit
-            ? "اطلاعات محصول را ویرایش و ذخیره کنید."
-            : "اطلاعات محصول جدید را وارد کنید."
-        }
+        title="افزودن محصول دستی"
+        description="اگر محصول شما در کاتالوگ برندها نیست، اطلاعات آن را به‌صورت دستی وارد کنید."
       />
       <ProductForm
-        initialValues={
-          isEdit && productQuery.data
-            ? toFormValues(productQuery.data)
-            : emptyValues
-        }
-        submitLabel={isEdit ? "ذخیره تغییرات" : "ایجاد محصول"}
-        isSubmitting={createProduct.isPending || updateProduct.isPending}
+        initialValues={emptyValues}
+        submitLabel="ایجاد محصول"
+        isSubmitting={createProduct.isPending}
         onSubmit={handleSubmit}
         onCancel={goToList}
       />

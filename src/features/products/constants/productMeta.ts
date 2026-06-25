@@ -1,5 +1,10 @@
 import type { BadgeTone } from "@/shared/ui";
-import type { Product, ProductStatus } from "../types/product.types";
+import type {
+  CatalogItemSource,
+  Product,
+  ProductStatus,
+  ProductVariant,
+} from "../types/product.types";
 
 export const PRODUCT_STATUS_LABELS: Record<ProductStatus, string> = {
   draft: "پیش‌نویس",
@@ -28,3 +33,17 @@ export const PRODUCT_STATUS_ORDER: ProductStatus[] = [
 /** Sum of stock across all variants. */
 export const getTotalStock = (product: Product): number =>
   product.variants.reduce((total, variant) => total + variant.stock, 0);
+
+/** Sum of stock across a plain list of variants (used in the add flow). */
+export const getVariantsStock = (variants: ProductVariant[]): number =>
+  variants.reduce((total, variant) => total + variant.stock, 0);
+
+export const CATALOG_SOURCE_LABELS: Record<CatalogItemSource, string> = {
+  catalog: "کاتالوگ",
+  journal: "ژورنال",
+};
+
+export const CATALOG_SOURCE_TONES: Record<CatalogItemSource, BadgeTone> = {
+  catalog: "neutral",
+  journal: "primary",
+};

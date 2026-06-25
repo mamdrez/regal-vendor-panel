@@ -5,6 +5,8 @@ export { default as Select } from "./Select/Select";
 export type { SelectOption } from "./Select/Select";
 export { default as DateInput } from "./DateInput/DateInput";
 export { default as Card } from "./Card/Card";
+export { default as ChartCard } from "./ChartCard/ChartCard";
+export type { ChartCardSize } from "./ChartCard/ChartCard";
 export { default as Badge } from "./Badge/Badge";
 export type { BadgeTone } from "./Badge/Badge";
 export { default as Modal } from "./Modal/Modal";

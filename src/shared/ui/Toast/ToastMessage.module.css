@@ -1,0 +1,39 @@
+.toast {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+  text-align: right;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.35rem;
+  height: 1.35rem;
+  flex-shrink: 0;
+  border-radius: 50%;
+  color: #fff;
+}
+
+.toast[data-variant="success"] .icon {
+  background-color: var(--success);
+}
+
+.toast[data-variant="error"] .icon {
+  background-color: var(--error);
+}
+
+.toast[data-variant="info"] .icon {
+  background-color: var(--rg-primary);
+}
+
+.message {
+  flex: 1;
+  min-width: 0;
+  font-family: "regular";
+  font-size: var(--rg-fs-sm);
+  color: var(--rg-text);
+  line-height: 1.5;
+}

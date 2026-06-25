@@ -1,0 +1,53 @@
+.step {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.title {
+  font-family: "bold";
+  font-size: var(--rg-fs-lg);
+  color: var(--rg-text);
+}
+
+.description {
+  font-size: var(--rg-fs-sm);
+  color: var(--rg-text-muted);
+  line-height: 1.7;
+}
+
+.sections {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.sectionTitle {
+  font-family: "bold";
+  font-size: var(--rg-fs-sm);
+  color: var(--rg-text-muted);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  gap: 0.85rem;
+}
+
+@media screen and (max-width: 560px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -54,16 +54,14 @@
   background: var(--rg-surface-muted);
 }
 
-.heroStats span,
-.statusCard span {
+.heroStats span {
   display: block;
   font-family: "regular";
   font-size: 0.8rem;
   color: var(--rg-text-muted);
 }
 
-.heroStats strong,
-.statusCard strong {
+.heroStats strong {
   display: block;
   margin-top: 0.35rem;
   font-family: "bold";
@@ -84,7 +82,6 @@
   gap: 1rem;
 }
 
-.chartCard,
 .section {
   min-width: 0;
   display: flex;
@@ -106,104 +103,6 @@
   color: var(--rg-text);
 }
 
-.chart {
-  height: 16rem;
-  display: grid;
-  grid-template-columns: repeat(7, minmax(0, 1fr));
-  align-items: end;
-  gap: 0.65rem;
-  padding-top: 1rem;
-}
-
-.barItem {
-  min-width: 0;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 0.45rem;
-}
-
-.barValue {
-  max-width: 100%;
-  min-height: 2.2rem;
-  overflow-wrap: anywhere;
-  text-align: center;
-  font-family: "regular";
-  font-size: 0.68rem;
-  line-height: 1.4;
-  color: var(--rg-text-soft);
-}
-
-.bar {
-  width: 100%;
-  max-width: 2.2rem;
-  min-height: 0.75rem;
-  border-radius: var(--rg-radius-pill) var(--rg-radius-pill) 0.4rem 0.4rem;
-  background: var(--rg-primary);
-}
-
-.barLabel {
-  font-family: "normal";
-  font-size: 0.72rem;
-  color: var(--rg-text-muted);
-  white-space: nowrap;
-}
-
-.horizontalBars {
-  display: flex;
-  flex-direction: column;
-  gap: 0.9rem;
-}
-
-.horizontalRow {
-  display: flex;
-  flex-direction: column;
-  gap: 0.45rem;
-}
-
-.horizontalMeta {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  font-family: "normal";
-  font-size: 0.84rem;
-  color: var(--rg-text);
-}
-
-.horizontalMeta strong {
-  color: var(--rg-text-muted);
-}
-
-.horizontalTrack {
-  height: 0.55rem;
-  overflow: hidden;
-  border-radius: var(--rg-radius-pill);
-  background: var(--rg-border);
-}
-
-.horizontalTrack span {
-  display: block;
-  height: 100%;
-  border-radius: inherit;
-  background: var(--rg-primary);
-}
-
-.statusGrid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.75rem;
-}
-
-.statusCard {
-  padding: 0.85rem;
-  border: 1px solid var(--rg-border);
-  border-radius: var(--rg-radius-sm);
-  background: var(--rg-surface-muted);
-}
-
 .list {
   display: flex;
   flex-direction: column;
@@ -221,20 +120,6 @@
 
 .listRow:hover {
   background-color: var(--rg-surface-muted);
-}
-
-.rank {
-  width: 1.8rem;
-  height: 1.8rem;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  border-radius: 50%;
-  background: var(--rg-primary-tint);
-  color: var(--rg-primary);
-  font-family: "bold";
-  font-size: 0.82rem;
 }
 
 .rowInfo {
@@ -325,16 +210,7 @@
 }
 
 @media screen and (max-width: 520px) {
-  .statsGrid,
-  .statusGrid {
+  .statsGrid {
     grid-template-columns: 1fr;
-  }
-
-  .chart {
-    gap: 0.4rem;
-  }
-
-  .barValue {
-    display: none;
   }
 }

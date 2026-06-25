@@ -1,6 +1,7 @@
 import type { FC } from "react";
-import { Badge, Button, EmptyState, Icon } from "@/shared/ui";
+import { Button, EmptyState, Icon } from "@/shared/ui";
 import type { ShopBranch } from "../types/shopProfile.types";
+import BranchCard from "./BranchCard";
 import styles from "./BranchList.module.css";
 
 interface BranchListProps {
@@ -49,68 +50,13 @@ const BranchList: FC<BranchListProps> = ({
     ) : (
       <div className={styles.grid}>
         {branches.map((branch) => (
-          <article key={branch.id} className={styles.card}>
-            <div className={styles.cardHeader}>
-              <div>
-                <h3 className={styles.branchName}>{branch.name}</h3>
-                <p className={styles.city}>
-                  {[branch.province, branch.city].filter(Boolean).join("، ")}
-                </p>
-              </div>
-              <Badge tone={branch.isActive ? "success" : "neutral"}>
-                {branch.isActive ? "فعال" : "غیرفعال"}
-              </Badge>
-            </div>
-
-            <div className={styles.details}>
-              <span>
-                <Icon name="map-pin" size={16} />
-                {branch.address || "آدرس ثبت نشده"}
-              </span>
-              <span>
-                <Icon name="phone" size={16} />
-                {branch.phone || "شماره تماس ثبت نشده"}
-              </span>
-              <span>
-                <Icon name="clock" size={16} />
-                {branch.workingHours || "ساعت کاری ثبت نشده"}
-              </span>
-              {branch.location && (
-                <span dir="ltr">
-                  <Icon name="globe" size={16} />
-                  {branch.location}
-                </span>
-              )}
-            </div>
-
-            <div className={styles.actions}>
-              <Button
-                variant="outline"
-                size="sm"
-                leadingIcon={<Icon name="edit" size={15} />}
-                onClick={() => onEdit(branch)}
-              >
-                ویرایش
-              </Button>
-              <Button
-                variant="ghost"
-                size="sm"
-                leadingIcon={<Icon name="power" size={15} />}
-                onClick={() => onToggle(branch)}
-              >
-                {branch.isActive ? "غیرفعال‌سازی" : "فعال‌سازی"}
-              </Button>
-              <Button
-                variant="ghost"
-                size="sm"
-                leadingIcon={<Icon name="trash" size={15} />}
-                onClick={() => onRemove(branch)}
-                className={styles.removeButton}
-              >
-                حذف
-              </Button>
-            </div>
-          </article>
+          <BranchCard
+            key={branch.id}
+            branch={branch}
+            onEdit={onEdit}
+            onToggle={onToggle}
+            onRemove={onRemove}
+          />
         ))}
       </div>
     )}
