@@ -1,6 +1,7 @@
 import { useState, type FC } from "react";
 import { Outlet } from "react-router-dom";
 import Header from "./Header";
+import MobileBottomNav from "./MobileBottomNav";
 import Sidebar from "./Sidebar";
 import styles from "./VendorLayout.module.css";
 
@@ -25,10 +26,10 @@ const VendorLayout: FC = () => {
       <div className={styles.main}>
         <Header onToggleSidebar={() => setIsSidebarOpen((v) => !v)} />
         <main className={styles.content}>
-          <div className={styles.contentInner}>
-            <Outlet />
-          </div>
+          <Outlet />
+          <div className={styles.mobileScrollSpacer} aria-hidden="true" />
         </main>
+        <MobileBottomNav />
       </div>
     </div>
   );

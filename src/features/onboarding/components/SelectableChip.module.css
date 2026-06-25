@@ -7,7 +7,7 @@
   border: 1px solid var(--rg-border-strong);
   background-color: var(--rg-surface);
   color: var(--rg-text-muted);
-  font-family: "regular";
+  font-family: "normal";
   font-size: 0.9rem;
   cursor: pointer;
   transition:

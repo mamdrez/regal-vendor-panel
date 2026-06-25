@@ -225,6 +225,9 @@ input {
 input::placeholder {
   font-family: regular;
 }
+button {
+  font-family: regular !important;
+}
 
 /* icon svg render */
 .custom-icon div {

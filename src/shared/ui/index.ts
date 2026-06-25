@@ -16,6 +16,8 @@ export { default as ImageUploader } from "./ImageUploader/ImageUploader";
 export { default as EmptyState } from "./EmptyState/EmptyState";
 export { default as LoadingState } from "./LoadingState/LoadingState";
 export { default as PageHeader } from "./PageHeader/PageHeader";
+export { default as Tabs } from "./Tabs/Tabs";
+export type { TabItem } from "./Tabs/Tabs";
 export { default as PlaceholderView } from "./PlaceholderView/PlaceholderView";
 export { default as Logo } from "./Logo/Logo";
 export { default as Icon } from "./Icon/Icon";

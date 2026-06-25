@@ -9,13 +9,10 @@ import DashboardPage from "@/features/dashboard/pages/DashboardPage";
 import ProductsListPage from "@/features/products/pages/ProductsListPage";
 import ProductFormPage from "@/features/products/pages/ProductFormPage";
 import OrdersPage from "@/features/orders/pages/OrdersPage";
-import InventoryPage from "@/features/inventory/pages/InventoryPage";
 import CollectionsPage from "@/features/collections/pages/CollectionsPage";
 import DiscountsPage from "@/features/discounts/pages/DiscountsPage";
 import ShopProfilePage from "@/features/shopProfile/pages/ShopProfilePage";
-import AnalyticsPage from "@/features/analytics/pages/AnalyticsPage";
 import NotificationsPage from "@/features/notifications/pages/NotificationsPage";
-import SettingsPage from "@/features/settings/pages/SettingsPage";
 import ProtectedRoute from "./guards/ProtectedRoute";
 import PublicRoute from "./guards/PublicRoute";
 import OnboardingRoute from "./guards/OnboardingRoute";
@@ -44,13 +41,16 @@ const AppRoutes: FC = () => (
         <Route path={paths.productNew} element={<ProductFormPage />} />
         <Route path={paths.productEditPattern} element={<ProductFormPage />} />
         <Route path={paths.orders} element={<OrdersPage />} />
-        <Route path={paths.inventory} element={<InventoryPage />} />
+        <Route
+          path={paths.inventory}
+          element={<Navigate to={`${paths.products}?tab=inventory`} replace />}
+        />
         <Route path={paths.collections} element={<CollectionsPage />} />
         <Route path={paths.discounts} element={<DiscountsPage />} />
         <Route path={paths.shopProfile} element={<ShopProfilePage />} />
-        <Route path={paths.analytics} element={<AnalyticsPage />} />
+        <Route path={paths.analytics} element={<Navigate to={paths.dashboard} replace />} />
         <Route path={paths.notifications} element={<NotificationsPage />} />
-        <Route path={paths.settings} element={<SettingsPage />} />
+        <Route path={paths.settings} element={<Navigate to={paths.shopProfile} replace />} />
       </Route>
     </Route>
 

@@ -1,0 +1,240 @@
+.hero {
+  overflow: hidden;
+  border: 1px solid var(--rg-border);
+  border-radius: var(--rg-radius-lg);
+  background: var(--rg-surface);
+  box-shadow: var(--rg-shadow-sm);
+}
+
+.cover {
+  position: relative;
+  max-height: 14rem;
+  background: var(--rg-surface-muted);
+}
+
+.coverImage {
+  width: 100%;
+  height: 100%;
+  max-height: 14rem;
+  object-fit: cover;
+  display: block;
+}
+
+.coverFallback {
+  min-height: 14rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 1.25rem;
+  color: rgba(27, 26, 24, 0.22);
+  background:
+    linear-gradient(135deg, rgba(92, 4, 37, 0.08), transparent 36%),
+    linear-gradient(45deg, #f7f5f2 0 25%, #ffffff 25% 50%, #f3f0ea 50% 75%, #ffffff 75%);
+  background-size: auto, 2rem 2rem;
+}
+
+.coverFallback span {
+  font-family: "bold";
+  font-size: 0.9rem;
+  letter-spacing: 0;
+}
+
+.profileBlock {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) 18rem;
+  gap: 1.25rem;
+  align-items: start;
+  padding: 0 1.5rem 1.5rem;
+}
+
+.logoWrap {
+  width: 6rem;
+  height: 6rem;
+  margin-top: -3.2rem;
+  padding: 0.35rem;
+  border-radius: 50%;
+  background: var(--rg-surface);
+  box-shadow: var(--rg-shadow-md);
+  z-index: 999;
+  overflow: hidden;
+  border: 3px solid var(--rg-border);
+}
+
+.logo,
+.logoFallback {
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+}
+
+.logo {
+  object-fit: cover;
+  display: block;
+}
+
+.logoFallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--rg-primary);
+  background: var(--rg-primary-tint);
+}
+
+.identity {
+  min-width: 0;
+  padding-top: 1.25rem;
+}
+
+.titleRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.name {
+  font-family: "bold";
+  font-size: 1.65rem;
+  line-height: 1.35;
+  color: var(--rg-text);
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-top: 0.55rem;
+  font-family: "regular";
+  font-size: 0.82rem;
+  color: var(--rg-text-muted);
+}
+
+.description {
+  max-width: 44rem;
+  margin-top: 1rem;
+  font-family: "regular";
+  font-size: 0.94rem;
+  line-height: 2;
+  color: var(--rg-text-muted);
+}
+
+.statusCard {
+  margin-top: 1.25rem;
+  padding: 1rem;
+  border: 1px solid var(--rg-border);
+  border-radius: var(--rg-radius);
+  background: var(--rg-surface-muted);
+}
+
+.statusLabel {
+  display: block;
+  font-family: "regular";
+  font-size: 0.78rem;
+  color: var(--rg-text-muted);
+}
+
+.statusValue {
+  display: block;
+  margin-top: 0.75rem;
+  font-family: "bold";
+  font-size: 1.45rem;
+  color: var(--rg-text);
+}
+
+.progressTrack {
+  height: 0.45rem;
+  margin-top: 0.75rem;
+  overflow: hidden;
+  border-radius: var(--rg-radius-pill);
+  background: var(--rg-border);
+}
+
+.progressValue {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--rg-primary);
+}
+
+.statusCard p {
+  margin-top: 0.75rem;
+  font-family: "regular";
+  font-size: 0.78rem;
+  line-height: 1.8;
+  color: var(--rg-text-muted);
+}
+
+@media screen and (max-width: 980px) {
+  .profileBlock {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .statusCard {
+    grid-column: 1 / -1;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .hero {
+    border-radius: var(--rg-radius);
+  }
+
+  .cover,
+  .coverImage,
+  .coverFallback {
+    max-height: 7.5rem !important;
+  }
+
+  .profileBlock {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+    padding: 0 0.8rem 0.85rem;
+  }
+
+  .logoWrap {
+    margin-top: -2.2rem;
+    width: 5.2rem;
+    height: 5.2rem;
+  }
+
+  .identity {
+    padding-top: 0;
+  }
+
+  .titleRow {
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+
+  .titleRow button {
+    width: 100%;
+  }
+
+  .name {
+    font-size: 1.14rem;
+    line-height: 1.55;
+  }
+
+  .meta {
+    gap: 0.45rem;
+    margin-top: 0.4rem;
+    font-size: 0.75rem;
+  }
+
+  .description {
+    margin-top: 0.65rem;
+    font-size: 0.8rem;
+    line-height: 1.85;
+  }
+
+  .statusCard {
+    margin-top: 0;
+    padding: 0.75rem;
+  }
+
+  .statusValue {
+    margin-top: 0.4rem;
+    font-size: 1.15rem;
+  }
+}

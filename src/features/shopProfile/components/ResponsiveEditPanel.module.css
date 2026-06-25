@@ -1,0 +1,141 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: rgba(27, 26, 24, 0.28);
+  backdrop-filter: blur(6px);
+}
+
+.panel {
+  width: min(42rem, 100%);
+  max-height: min(86vh, 48rem);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--rg-surface);
+  border: 1px solid var(--rg-border);
+  border-radius: var(--rg-radius-lg);
+  box-shadow: var(--rg-shadow-lg);
+}
+
+.header,
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--rg-border);
+}
+
+.footer {
+  justify-content: flex-end;
+  border-top: 1px solid var(--rg-border);
+  border-bottom: 0;
+  background: var(--rg-surface-muted);
+}
+
+.title {
+  font-family: "bold";
+  font-size: 1.05rem;
+  color: var(--rg-text);
+}
+
+.closeButton {
+  width: 2.25rem;
+  height: 2.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: var(--rg-text-muted);
+  background: var(--rg-surface-muted);
+  cursor: pointer;
+  transition:
+    color 0.16s ease,
+    background-color 0.16s ease;
+}
+
+.closeButton:hover {
+  color: var(--rg-text);
+  background: var(--rg-selected);
+}
+
+.mobileBackIcon {
+  display: none;
+}
+
+.body {
+  padding: 1.25rem;
+  overflow: auto;
+}
+
+@media screen and (max-width: 640px) {
+  .overlay {
+    align-items: stretch;
+    padding: 0;
+    background: var(--rg-surface);
+    backdrop-filter: none;
+  }
+
+  .panel {
+    width: 100%;
+    height: 100svh;
+    max-height: none;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .panel::before {
+    content: none;
+  }
+
+  .header,
+  .body,
+  .footer {
+    padding-inline: 0.9rem;
+  }
+
+  .header {
+    min-height: 3.75rem;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+  }
+
+  .title {
+    font-size: 0.98rem;
+  }
+
+  .closeButton {
+    width: 2.25rem;
+    height: 2.25rem;
+    background: transparent;
+  }
+
+  .desktopCloseIcon {
+    display: none;
+  }
+
+  .mobileBackIcon {
+    display: inline-flex;
+  }
+
+  .body {
+    flex: 1;
+    padding-block: 0.9rem;
+  }
+
+  .footer {
+    flex-direction: column-reverse;
+    padding-block: 0.8rem calc(0.8rem + env(safe-area-inset-bottom));
+  }
+
+  .footer > * {
+    width: 100%;
+  }
+}

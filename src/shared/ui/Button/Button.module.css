@@ -4,7 +4,7 @@
   justify-content: center;
   gap: 0.5rem;
   border-radius: var(--rg-radius-pill);
-  font-family: "bold";
+  font-family: "normal";
   cursor: pointer;
   white-space: nowrap;
   transition:
@@ -30,17 +30,17 @@
 .sm {
   height: 2.25rem;
   padding: 0 0.9rem;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
 }
 .md {
   height: 2.75rem;
   padding: 0 1.25rem;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
 }
 .lg {
   height: 3.25rem;
   padding: 0 1.6rem;
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 
 .fullWidth {

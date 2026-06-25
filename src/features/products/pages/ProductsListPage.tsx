@@ -1,5 +1,5 @@
 import { useMemo, useState, type FC } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import {
   Button,
   Card,
@@ -8,10 +8,12 @@ import {
   LoadingState,
   Modal,
   PageHeader,
+  Tabs,
 } from "@/shared/ui";
 import { paths } from "@/routers/paths";
 import ProductFilters from "../components/ProductFilters";
 import ProductsList from "../components/ProductsList";
+import { getTotalStock } from "../constants/productMeta";
 import { useProducts } from "../hooks/useProducts";
 import {
   useDeleteProduct,
@@ -21,15 +23,63 @@ import type { Product, ProductFilters as Filters } from "../types/product.types"
 import styles from "./ProductsListPage.module.css";
 
 const initialFilters: Filters = { search: "", status: "all", category: "all" };
+type ProductTab = "all" | "inventory" | "low_stock" | "out_of_stock";
+
+const productTabs: { value: ProductTab; label: string; description: string }[] = [
+  {
+    value: "all",
+    label: "همه محصولات",
+    description: "مدیریت محصول، وضعیت انتشار و اطلاعات اصلی.",
+  },
+  {
+    value: "inventory",
+    label: "موجودی",
+    description: "موجودی تنوع‌ها و نیازهای انبار.",
+  },
+  {
+    value: "low_stock",
+    label: "کم‌موجودی‌ها",
+    description: "محصولاتی که موجودی آن‌ها رو به اتمام است.",
+  },
+  {
+    value: "out_of_stock",
+    label: "ناموجودها",
+    description: "محصولاتی که نیاز به شارژ یا اصلاح وضعیت دارند.",
+  },
+];
+
+const normalizeTab = (tab: string | null): ProductTab =>
+  productTabs.some((item) => item.value === tab) ? (tab as ProductTab) : "all";
 
 const ProductsListPage: FC = () => {
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const activeTab = normalizeTab(searchParams.get("tab"));
   const [filters, setFilters] = useState<Filters>(initialFilters);
   const [toDelete, setToDelete] = useState<Product | null>(null);
 
-  const { data: products, isLoading, isError, refetch } = useProducts(filters);
+  const queryFilters = useMemo<Filters>(
+    () => ({
+      ...filters,
+      status: activeTab === "out_of_stock" ? "out_of_stock" : filters.status,
+    }),
+    [activeTab, filters],
+  );
+
+  const { data: products, isLoading, isError, refetch } = useProducts(queryFilters);
   const deleteProduct = useDeleteProduct();
   const setStatus = useSetProductStatus();
+
+  const visibleProducts = useMemo(() => {
+    if (!products) return [];
+    if (activeTab === "low_stock") {
+      return products.filter((product) => {
+        const stock = getTotalStock(product);
+        return stock > 0 && stock < 5;
+      });
+    }
+    return products;
+  }, [activeTab, products]);
 
   const hasActiveFilters = useMemo(
     () =>
@@ -68,21 +118,25 @@ const ProductsListPage: FC = () => {
         />
       );
     }
-    if (!products || products.length === 0) {
-      return hasActiveFilters ? (
+    if (!products || products.length === 0 || visibleProducts.length === 0) {
+      if (hasActiveFilters) {
+        return (
+          <EmptyState
+            title="محصولی یافت نشد"
+            description="با فیلترهای انتخاب‌شده محصولی پیدا نشد. فیلترها را تغییر دهید."
+            action={
+              <Button variant="outline" onClick={() => setFilters(initialFilters)}>
+                حذف فیلترها
+              </Button>
+            }
+          />
+        );
+      }
+
+      return (
         <EmptyState
-          title="محصولی یافت نشد"
-          description="با فیلترهای انتخاب‌شده محصولی پیدا نشد. فیلترها را تغییر دهید."
-          action={
-            <Button variant="outline" onClick={() => setFilters(initialFilters)}>
-              حذف فیلترها
-            </Button>
-          }
-        />
-      ) : (
-        <EmptyState
-          title="هنوز محصولی اضافه نکرده‌اید"
-          description="اولین محصول فروشگاه خود را اضافه کنید تا اینجا نمایش داده شود."
+          title="هنوز محصولی در این بخش نیست"
+          description="محصولات، موجودی و تنوع‌های فروشگاه از همین بخش مدیریت می‌شوند."
           action={
             <Button
               leadingIcon={<Icon name="plus" size={18} />}
@@ -94,9 +148,10 @@ const ProductsListPage: FC = () => {
         />
       );
     }
+
     return (
       <ProductsList
-        products={products}
+        products={visibleProducts}
         onEdit={(id) => navigate(paths.productEdit(id))}
         onToggleStatus={handleToggleStatus}
         onDelete={setToDelete}
@@ -108,7 +163,7 @@ const ProductsListPage: FC = () => {
     <div className={styles.page}>
       <PageHeader
         title="محصولات"
-        description="محصولات فروشگاه خود را مدیریت کنید."
+        description="محصولات، تنوع‌ها و موجودی فروشگاه خود را از همین بخش مدیریت کنید."
         actions={
           <Button
             leadingIcon={<Icon name="plus" size={18} />}
@@ -118,6 +173,49 @@ const ProductsListPage: FC = () => {
           </Button>
         }
       />
+
+      <Tabs
+        items={productTabs}
+        value={activeTab}
+        ariaLabel="بخش‌های محصولات"
+        onChange={(tab) =>
+          setSearchParams(tab === "all" ? {} : { tab })
+        }
+      />
+
+      {activeTab === "inventory" && products && (
+        <div className={styles.inventorySummary}>
+          <Card padding="md" className={styles.inventoryCard}>
+            <Icon name="products" size={20} />
+            <div>
+              <span>کل محصولات</span>
+              <strong>{products.length.toLocaleString("fa-IR")}</strong>
+            </div>
+          </Card>
+          <Card padding="md" className={styles.inventoryCard}>
+            <Icon name="inventory" size={20} />
+            <div>
+              <span>کل موجودی تنوع‌ها</span>
+              <strong>
+                {products
+                  .reduce((sum, product) => sum + getTotalStock(product), 0)
+                  .toLocaleString("fa-IR")}
+              </strong>
+            </div>
+          </Card>
+          <Card padding="md" className={styles.inventoryCard}>
+            <Icon name="alert-triangle" size={20} />
+            <div>
+              <span>نیازمند توجه</span>
+              <strong>
+                {products
+                  .filter((product) => getTotalStock(product) < 5)
+                  .length.toLocaleString("fa-IR")}
+              </strong>
+            </div>
+          </Card>
+        </div>
+      )}
 
       <Card padding="sm" className={styles.filtersCard}>
         <ProductFilters filters={filters} onChange={setFilters} />

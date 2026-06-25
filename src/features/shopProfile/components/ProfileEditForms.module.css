@@ -1,0 +1,49 @@
+.formStack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.imageGrid {
+  display: grid;
+  grid-template-columns: minmax(10rem, 0.8fr) minmax(15rem, 1.2fr);
+  gap: 1rem;
+  align-items: start;
+}
+
+.checkRow {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-family: "normal";
+  font-size: 0.88rem;
+  color: var(--rg-text);
+}
+
+.checkRow input {
+  width: 1rem;
+  height: 1rem;
+  accent-color: var(--rg-primary);
+}
+
+.error {
+  padding: 0.7rem 0.85rem;
+  border-radius: var(--rg-radius-sm);
+  font-family: "normal";
+  font-size: 0.84rem;
+  color: var(--error);
+  background: var(--error-secondary);
+}
+
+@media screen and (max-width: 640px) {
+  .grid,
+  .imageGrid {
+    grid-template-columns: 1fr;
+  }
+}
