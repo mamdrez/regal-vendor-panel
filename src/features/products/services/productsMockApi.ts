@@ -1,4 +1,12 @@
 import { delay } from "@/shared/utils/delay";
+import {
+  Product1,
+  Product2,
+  Product3,
+  Product4,
+  Product5,
+  Product6,
+} from "@/assets/images/product";
 import type {
   AddVendorProductPayload,
   Product,
@@ -7,7 +15,8 @@ import type {
   ProductStatus,
 } from "../types/product.types";
 
-const STORAGE_KEY = "regal_vendor_products";
+/** Bumped to v2 so existing mock data re-seeds with product images. */
+const STORAGE_KEY = "regal_vendor_products_v2";
 
 const createId = (prefix: string): string =>
   `${prefix}-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 7)}`;
@@ -21,7 +30,7 @@ const seedProducts = (): Product[] => [
     brandName: "Zara",
     categoryName: "لباس زنانه",
     description: "مانتو کتان با برش امروزی، مناسب فصل بهار.",
-    images: [],
+    images: [Product1],
     price: 2_450_000,
     discountPrice: 1_980_000,
     status: "active",
@@ -39,7 +48,7 @@ const seedProducts = (): Product[] => [
     brandName: "Nike",
     categoryName: "کفش",
     description: "کفش ورزشی سبک با زیره فوم.",
-    images: [],
+    images: [Product2],
     price: 4_200_000,
     status: "active",
     soldCount: 98,
@@ -56,7 +65,7 @@ const seedProducts = (): Product[] => [
     brandName: "Mango",
     categoryName: "کیف",
     description: "کیف دستی چرم طبیعی با بند بلند.",
-    images: [],
+    images: [Product3],
     price: 3_100_000,
     discountPrice: 2_650_000,
     status: "active",
@@ -73,7 +82,7 @@ const seedProducts = (): Product[] => [
     brandName: "H&M",
     categoryName: "لباس مردانه",
     description: "تی‌شرت نخی اورسایز با چاپ مینیمال.",
-    images: [],
+    images: [Product4],
     price: 850_000,
     status: "out_of_stock",
     soldCount: 30,
@@ -89,7 +98,7 @@ const seedProducts = (): Product[] => [
     brandName: "Dior",
     categoryName: "زیورآلات",
     description: "دستبند نقره با طراحی ظریف.",
-    images: [],
+    images: [Product5],
     price: 1_750_000,
     status: "draft",
     soldCount: 0,
@@ -105,7 +114,7 @@ const seedProducts = (): Product[] => [
     brandName: "Gucci",
     categoryName: "عطر و زیبایی",
     description: "رایحه گلی-چوبی ماندگار.",
-    images: [],
+    images: [Product6],
     price: 5_900_000,
     status: "inactive",
     soldCount: 21,

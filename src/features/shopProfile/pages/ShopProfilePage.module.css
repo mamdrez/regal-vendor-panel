@@ -1,6 +1,5 @@
 .page {
   width: 100%;
-  max-width: var(--rg-content-max);
   display: flex;
   flex-direction: column;
   gap: 1.25rem;

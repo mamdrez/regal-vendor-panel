@@ -1,0 +1,15 @@
+export { default as Product1 } from "./1.png";
+export { default as Product2 } from "./2.png";
+export { default as Product3 } from "./3.png";
+export { default as Product4 } from "./4.png";
+export { default as Product5 } from "./5.png";
+export { default as Product6 } from "./6.png";
+export { default as Product7 } from "./7.png";
+export { default as Product8 } from "./8.png";
+export { default as Product9 } from "./9.png";
+export { default as Product10 } from "./10.png";
+export { default as Product11 } from "./11.png";
+export { default as Product12 } from "./12.png";
+export { default as Product13 } from "./13.png";
+export { default as Product14 } from "./14.png";
+export { default as Product15 } from "./15.png";

@@ -1,4 +1,5 @@
 import { delay } from "@/shared/utils/delay";
+import { PRODUCT_IMAGES } from "../constants/productImages";
 import type {
   Brand,
   BrandCatalogItem,
@@ -90,7 +91,7 @@ const item = (
   partial: Omit<BrandCatalogItem, "images"> & { images?: string[] },
 ): BrandCatalogItem => ({ images: [], ...partial });
 
-const CATALOG_ITEMS: BrandCatalogItem[] = [
+const CATALOG_ITEM_DEFS: BrandCatalogItem[] = [
   // Zara
   item({
     id: "cat-zara-1",
@@ -428,6 +429,21 @@ const CATALOG_ITEMS: BrandCatalogItem[] = [
     source: "journal",
   }),
 ];
+
+/**
+ * Attaches mock product images to every catalog item. Each item gets a
+ * primary image plus a secondary one (offset in the pool) so cards and
+ * galleries look varied.
+ */
+const CATALOG_ITEMS: BrandCatalogItem[] = CATALOG_ITEM_DEFS.map(
+  (entry, index) => ({
+    ...entry,
+    images: [
+      PRODUCT_IMAGES[index % PRODUCT_IMAGES.length],
+      PRODUCT_IMAGES[(index + 6) % PRODUCT_IMAGES.length],
+    ],
+  }),
+);
 
 const includesText = (haystack: string, needle: string): boolean =>
   haystack.toLowerCase().includes(needle.toLowerCase());

@@ -2,6 +2,7 @@ import type { FC } from "react";
 import { Icon } from "@/shared/ui";
 import { formatNumber, formatPrice } from "@/shared/utils/format";
 import { getTotalStock } from "../constants/productMeta";
+import { getProductImage } from "../constants/productImages";
 import type { Product } from "../types/product.types";
 import ProductStatusBadge from "./ProductStatusBadge";
 import styles from "./ProductsList.module.css";
@@ -31,13 +32,10 @@ const getDiscountPercent = (product: Product): number | null => {
 
 const Thumb: FC<{ product: Product }> = ({ product }) => {
   const percent = getDiscountPercent(product);
+  const src = product.images[0] ?? getProductImage(product.id);
   return (
     <div className={styles.thumb}>
-      {product.images[0] ? (
-        <img src={product.images[0]} alt="" className={styles.thumbImg} />
-      ) : (
-        <Icon name="image" size={20} />
-      )}
+      <img src={src} alt="" className={styles.thumbImg} />
       {percent !== null && (
         <span className={styles.discountTag}>
           {percent.toLocaleString("fa-IR")}٪−
