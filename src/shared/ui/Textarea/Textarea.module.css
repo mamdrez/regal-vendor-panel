@@ -1,0 +1,55 @@
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  width: 100%;
+}
+
+.label {
+  font-family: "regular";
+  font-size: 0.85rem;
+  color: var(--rg-text-muted);
+}
+
+.textarea {
+  width: 100%;
+  min-height: 6rem;
+  padding: 0.8rem 0.95rem;
+  font-family: "regular";
+  font-size: 0.95rem;
+  color: var(--rg-text);
+  background-color: var(--rg-surface);
+  border: 1px solid var(--rg-border);
+  border-radius: var(--rg-radius-sm);
+  resize: vertical;
+  outline: none;
+  transition:
+    border-color 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.textarea::placeholder {
+  color: var(--rg-text-soft);
+  font-family: "regular";
+}
+
+.textarea:focus {
+  border-color: var(--rg-primary);
+  box-shadow: 0 0 0 4px var(--rg-ring);
+}
+
+.hasError {
+  border-color: var(--error);
+}
+
+.error {
+  font-family: "regular";
+  font-size: 0.78rem;
+  color: var(--error);
+}
+
+.hint {
+  font-family: "regular";
+  font-size: 0.78rem;
+  color: var(--rg-text-soft);
+}

@@ -1,0 +1,162 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  background-color: var(--brand-cream-tint);
+  overflow: hidden;
+}
+
+.heroMark :global(svg) {
+  opacity: 0.85;
+}
+
+.heroText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  max-width: 34rem;
+}
+
+.heroEyebrow {
+  font-family: "regular";
+  font-size: 0.78rem;
+  color: var(--rg-primary);
+}
+
+.heroTitle {
+  font-family: "bold";
+  font-size: 1.4rem;
+  color: var(--rg-text);
+}
+
+.heroDescription {
+  font-family: "regular";
+  font-size: 0.9rem;
+  color: var(--rg-text-muted);
+  line-height: 1.8;
+}
+
+.heroMark {
+  flex-shrink: 0;
+  opacity: 0.9;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+}
+
+.sections {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.sectionHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--rg-primary);
+}
+
+.sectionTitle {
+  font-family: "bold";
+  font-size: 1rem;
+  color: var(--rg-text);
+}
+
+.muted {
+  font-family: "regular";
+  font-size: 0.86rem;
+  color: var(--rg-text-soft);
+  padding: 1rem 0;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.listRow {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.7rem 0.6rem;
+  border-radius: var(--rg-radius-sm);
+  transition: background-color 0.14s ease;
+}
+
+.listRow:hover {
+  background-color: var(--rg-surface-muted);
+}
+
+.rank {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 50%;
+  background-color: var(--brand-pink-tint);
+  color: var(--rg-primary-deep);
+  font-family: "bold";
+  font-size: 0.82rem;
+  flex-shrink: 0;
+}
+
+.rowInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.rowTitle {
+  font-family: "bold";
+  font-size: 0.88rem;
+  color: var(--rg-text);
+}
+
+.rowMeta {
+  font-family: "regular";
+  font-size: 0.76rem;
+  color: var(--rg-text-soft);
+}
+
+@media screen and (max-width: 1100px) {
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .heroMark {
+    display: none;
+  }
+  .sections {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+}

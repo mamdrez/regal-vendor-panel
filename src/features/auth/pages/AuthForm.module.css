@@ -1,0 +1,66 @@
+.card {
+  width: 100%;
+  max-width: 26rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.title {
+  font-family: "bold";
+  font-size: 1.6rem;
+  color: var(--rg-text);
+}
+
+.subtitle {
+  font-family: "regular";
+  font-size: 0.92rem;
+  color: var(--rg-text-muted);
+  line-height: 1.7;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.alert {
+  font-family: "regular";
+  font-size: 0.82rem;
+  color: var(--error);
+  background-color: var(--danger);
+  border: 1px solid #f6c9c3;
+  border-radius: var(--rg-radius-sm);
+  padding: 0.7rem 0.9rem;
+  line-height: 1.6;
+}
+
+.switch {
+  font-family: "regular";
+  font-size: 0.88rem;
+  color: var(--rg-text-muted);
+  text-align: center;
+}
+
+.link {
+  font-family: "bold";
+  color: var(--rg-primary);
+}
+
+.link:hover {
+  color: var(--rg-primary-hover);
+}
+
+@media screen and (max-width: 480px) {
+  .title {
+    font-size: 1.4rem;
+  }
+}

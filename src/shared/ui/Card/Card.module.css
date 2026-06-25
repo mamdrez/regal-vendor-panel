@@ -1,0 +1,18 @@
+.card {
+  background-color: var(--rg-surface);
+  border: 1px solid var(--rg-border);
+  border-radius: var(--rg-radius);
+}
+
+.pad-none {
+  padding: 0;
+}
+.pad-sm {
+  padding: 0.5rem;
+}
+.pad-md {
+  padding: 0.75rem;
+}
+.pad-lg {
+  padding: 1rem;
+}

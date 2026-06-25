@@ -1,0 +1,112 @@
+.shimmerWrapper {
+    width: 100%;
+    background: #ffffff;
+    border-radius: 8px;
+    border: 1px solid #efefef;
+  }
+  
+  .shimmerTitle {
+    width: 10rem;
+    height: 2rem;
+    background: #f0f0f0;
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+    margin: 1rem;
+  }
+  
+  .tableWrapper {
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .headerRow {
+    display: flex;
+    background: #f9fafb;
+    min-height: 3rem;
+    align-items: center
+  }
+  
+  .bodyRow {
+    display: flex;
+    border-bottom: 1px solid #e5e7eb;
+    min-height: 3.8rem;
+    align-items: center;
+  }
+  
+  .bodyRow:last-child {
+    border-bottom: none;
+  }
+  
+  .headerCell, .bodyCell {
+    flex: 1;
+    padding: 12px 16px;
+  }
+  
+  .headerContent {
+    height: 20px;
+    width: 70%;
+  }
+  
+  .cellContent {
+    height: 16px;
+    width: 85%;
+    vertical-align: middle;
+  }
+  
+  .actionCell {
+    padding: 12px 16px;
+    width: 120px; /* Fixed width for action column */
+    display: flex;
+    align-items: center;
+  }
+  
+  .actionButtons {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .circleShimmer {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50px !important;
+  }
+  .paginatin {
+    display: flex;
+    align-items: center;
+    margin: 1.5rem;
+    gap: 1rem;
+  }
+  .paginationShimmer {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 8px !important;
+  }
+
+  
+  /* Shimmer Effect */
+  .shimmerEffect {
+    background: #f6f7f8;
+    background-image: linear-gradient(
+      to right,
+      #f6f7f8 0%,
+      #edeef1 20%,
+      #f6f7f8 40%,
+      #f6f7f8 100%
+    );
+    background-repeat: no-repeat;
+    background-size: 800px 104px;
+    border-radius: 4px;
+    position: relative;
+    animation: shimmer 1.5s infinite linear;
+  }
+  
+  @keyframes shimmer {
+    0% {
+      background-position: -468px 0;
+    }
+    100% {
+      background-position: 468px 0;
+    }
+  }

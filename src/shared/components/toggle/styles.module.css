@@ -1,0 +1,139 @@
+.toggleContainer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+}
+
+.labelToggle {
+  font-size: 0.9rem;
+  margin-bottom: 0.2rem;
+  color: var(--primary);
+  font-family: regular;
+}
+
+.switch {
+  position: relative;
+  background-color: #ccc;
+  border-radius: 34px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.disable {
+  opacity: 0.5;
+}
+
+.switch.small {
+  width: 40px;
+  min-width: 40px;
+  max-width: 40px;
+  height: 22px;
+  min-height: 22px;
+  max-height: 22px;
+  border-radius: 22px;
+}
+
+.switch.medium {
+  width: 60px;
+  min-width: 60px;
+  max-width: 60px;
+  height: 34px;
+  min-height: 34px;
+  max-height: 34px;
+  border-radius: 34px;
+}
+
+.switch.large {
+  width: 80px;
+  min-width: 80px;
+  max-width: 80px;
+  height: 44px;
+  min-height: 44px;
+  max-height: 44px;
+  border-radius: 44px;
+}
+
+.switch.default.on {
+  background-color: #4caf50;
+}
+
+.switch.default.off {
+  background-color: #ccc;
+}
+
+.switch.red.on {
+  background-color: #f44336;
+}
+
+.switch.red.off {
+  background-color: #ccc;
+}
+
+.switch.purple.on {
+  background-color: #9c27b0;
+}
+
+.switch.purple.off {
+  background-color: #ccc;
+}
+
+.switch.blue.on {
+  background-color: #2196f3;
+}
+
+.switch.blue.off {
+  background-color: #ccc;
+}
+
+.thumb {
+  position: absolute;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.switch.small .thumb {
+  width: 18px;
+  height: 18px;
+}
+
+.switch.medium .thumb {
+  width: 26px;
+  height: 26px;
+}
+
+.switch.large .thumb {
+  width: 36px;
+  height: 36px;
+}
+
+.switch.small.on .thumb {
+  transform: translateX(-3px);
+}
+
+.switch.small.off .thumb {
+  transform: translateX(-19px);
+}
+
+.switch.medium.on .thumb {
+  transform: translateX(-5px);
+}
+
+.switch.medium.off .thumb {
+  transform: translateX(-29px);
+}
+
+.switch.large.on .thumb {
+  transform: translateX(-6px);
+}
+
+.switch.large.off .thumb {
+  transform: translateX(-38px);
+}

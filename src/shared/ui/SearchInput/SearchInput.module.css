@@ -1,0 +1,46 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--rg-surface);
+  border: 1px solid var(--rg-border);
+  border-radius: var(--rg-radius-pill);
+  padding: 0 1rem;
+  height: 2.75rem;
+  min-width: 0;
+  transition:
+    border-color 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.wrapper:focus-within {
+  border-color: var(--rg-primary);
+  box-shadow: 0 0 0 4px var(--rg-ring);
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  color: var(--rg-text-soft);
+  flex-shrink: 0;
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: "regular";
+  font-size: 0.92rem;
+  color: var(--rg-text);
+}
+
+.input::placeholder {
+  color: var(--rg-text-soft);
+}
+
+.input::-webkit-search-cancel-button {
+  appearance: none;
+}

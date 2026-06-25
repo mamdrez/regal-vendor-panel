@@ -1,0 +1,44 @@
+.formToDatePicker {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  position: relative;
+}
+
+.datePickerContainer {
+  background-color: var(--tertiary);
+  height: 2.5rem !important;
+  border-radius: 8px;
+  width: 100%;
+  position: relative;
+}
+
+.datePickerContainerError {
+  transition: all 0.3s;
+  background-color: #ffefed !important;
+  border: 1px solid #f1998e !important;
+}
+
+.errorText {
+  color: var(--error) !important;
+  font-size: 0.7rem !important;
+  margin-top: 0.3rem !important;
+  position: absolute;
+  top: -0.1rem;
+  left: 0;
+}
+
+.datePickerContainer input {
+  width: 100%;
+  text-align: right;
+  padding: 0 0.5rem;
+}
+.datePickerContainer input::placeholder {
+  font-family: regular;
+  text-align: right;
+}
+.formToDatePicker > span {
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary);
+}

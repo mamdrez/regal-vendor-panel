@@ -1,0 +1,19 @@
+.badge {
+  border-radius: 6px;
+  padding: 7px 5px;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  transition: all 0.3s;
+  text-align: center;
+  width: fit-content;
+  cursor: pointer;
+}
+
+.circle {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50px;
+}

@@ -1,0 +1,57 @@
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.label {
+  font-family: "regular";
+  font-size: var(--rg-fs-sm);
+  color: var(--rg-text-muted);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: var(--rg-radius-pill);
+  border: 1px solid var(--rg-border-strong);
+  background-color: var(--rg-surface);
+  color: var(--rg-text-muted);
+  font-family: "regular";
+  font-size: var(--rg-fs-sm);
+  cursor: pointer;
+  transition:
+    border-color 0.16s ease,
+    background-color 0.16s ease,
+    color 0.16s ease;
+}
+
+.chip:hover {
+  border-color: var(--rg-primary);
+  color: var(--rg-text);
+}
+
+.selected {
+  background-color: var(--rg-selected);
+  border-color: var(--rg-primary);
+  color: var(--rg-text);
+  font-family: "bold";
+}
+
+.empty {
+  font-family: "regular";
+  font-size: var(--rg-fs-sm);
+  color: var(--rg-text-soft);
+  background-color: var(--rg-surface-muted);
+  border: 1px dashed var(--rg-border-strong);
+  border-radius: var(--rg-radius-sm);
+  padding: 0.85rem 1rem;
+}

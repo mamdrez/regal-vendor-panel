@@ -1,0 +1,189 @@
+.contentInput {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  justify-content: space-between;
+  width: 100%;
+  position: relative;
+}
+
+.labelContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.contentInput input {
+  background-color: var(--tertiary);
+  height: 2.5rem;
+  border-radius: 8px;
+  padding: 0 0.5rem;
+  font-size: 1rem;
+  font-family: "normal";
+  color: var(--primary);
+  position: relative;
+  border: 1px solid transparent;
+  transition: all 0.3s;
+  border: 1px solid transparent;
+}
+.errorInput {
+  transition: all 0.3s;
+  background-color: #ffefed !important;
+  border: 1px solid #f1998e !important;
+}
+
+.contentInput input:focus {
+  border: 1px solid var(--primary);
+}
+
+.contentInput input::placeholder {
+  text-align: right;
+  font-family: regular;
+}
+
+.contentInput textarea {
+  background-color: var(--tertiary);
+  height: 2.5rem;
+  border-radius: 8px;
+  padding: 0.5rem;
+  font-size: 1rem;
+  font-family: "normal";
+  color: var(--primary);
+  position: relative;
+  border: 1px solid transparent;
+  transition: all 0.3s;
+  border: 1px solid transparent;
+  transition: all 0.3s;
+  resize: none;
+}
+.contentInput textarea::placeholder {
+  text-align: right;
+  font-family: regular;
+}
+
+.contentInput label,
+.dropSheetLabel {
+  font-size: 0.9rem;
+  margin-bottom: 0.2rem;
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary);
+}
+.arrowBottom {
+  position: absolute;
+  top: 3rem;
+  left: 1.2rem;
+}
+.errorContainer {
+}
+.error {
+  width: 100%;
+  color: var(--error);
+  font-size: 0.8rem;
+  margin-top: 0.3rem;
+  font-size: 0.7rem;
+}
+
+.dropSheetValue {
+  background-color: var(--tertiary);
+  height: 3.2rem;
+  border-radius: 8px;
+  padding: 0 0.5rem;
+  font-size: 1rem;
+  font-family: "vazir";
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.creditInp {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  justify-content: space-between;
+  width: 100%;
+  position: relative;
+}
+
+.creditInpDeep {
+  background-color: var(--tertiary);
+  height: 3.2rem;
+  border-radius: 8px;
+  padding: 0 0.5rem;
+  font-size: 1rem;
+  font-family: "vazir";
+  color: var(--primary);
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.creditInpDeep input {
+  font-size: 1rem;
+  font-family: vazir-number;
+  font-weight: bold;
+  direction: ltr;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+}
+
+.creditInpDeep input::placeholder {
+  text-align: right;
+}
+
+.contentInput textarea:focus {
+  border: 1px solid var(--primary);
+  outline: none;
+}
+
+.inputWrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+}
+
+.disabled input {
+  pointer-events: none;
+  background-color: var(--secondary) !important;
+}
+
+.disabled {
+  cursor: not-allowed !important;
+}
+
+.inputWrapper input {
+  background-color: var(--tertiary);
+  height: 2.5rem;
+  border-radius: 8px;
+  padding: 0 0.5rem !important;
+  font-size: 1rem;
+  font-family: "normal";
+  color: var(--primary);
+  position: relative;
+  border: 1px solid transparent;
+  transition: all 0.3s;
+  border: 1px solid transparent;
+  width: 100%;
+}
+
+.inputWrapper input::placeholder {
+  font-size: 0.85rem;
+}
+
+.inputWrapper button {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

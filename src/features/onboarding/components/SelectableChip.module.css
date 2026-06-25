@@ -1,0 +1,29 @@
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.65rem 1.05rem;
+  border-radius: 999px;
+  border: 1px solid var(--rg-border-strong);
+  background-color: var(--rg-surface);
+  color: var(--rg-text-muted);
+  font-family: "regular";
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition:
+    border-color 0.18s ease,
+    background-color 0.18s ease,
+    color 0.18s ease;
+}
+
+.chip:hover {
+  border-color: var(--rg-primary);
+  color: var(--rg-text);
+}
+
+.selected {
+  background-color: var(--brand-pink-tint);
+  border-color: var(--rg-primary);
+  color: var(--rg-primary-deep);
+  font-family: "bold";
+}

@@ -1,0 +1,475 @@
+/* Rich text editor */
+.container {
+  min-height: 15rem;
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: #f7f7f5;
+  /* overflow: hidden; */
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.editor {
+  min-height: 400px;
+  padding: 1rem;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #1a202c;
+  font-family: regular;
+  background-color: #ffffff;
+  border-radius: 8px;
+  direction: rtl;
+}
+
+.editor:focus {
+  outline: none;
+}
+
+.editor p {
+  margin: 0.5rem 0;
+}
+
+.editor h1 {
+  font-size: 2rem;
+  font-family: bold;
+  margin: 1rem 0 0.5rem 0;
+}
+
+.editor h2 {
+  font-size: 1.5rem;
+  font-family: bold;
+  margin: 1rem 0 0.5rem 0;
+}
+
+.editor strong {
+  font-family: bold;
+}
+
+.editor em {
+  font-style: italic;
+}
+
+.editor s {
+  text-decoration: line-through;
+}
+
+.editor ul,
+.editor ol {
+  padding-left: 1.5rem;
+  margin: 0.5rem 0;
+}
+
+.editor li {
+  margin: 0.25rem 0;
+}
+
+.editor blockquote {
+  border-left: 4px solid #e2e8f0;
+  padding-left: 1rem;
+  margin: 1rem 0;
+  font-style: italic;
+  color: #718096;
+}
+
+.editor code {
+  background: #f7fafc;
+  padding: 0.125rem 0.25rem;
+  border-radius: 4px;
+  font-family: "Courier New", monospace;
+  font-size: 0.875rem;
+}
+
+.editor pre {
+  background: #f7fafc;
+  padding: 1rem;
+  border-radius: 4px;
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+.editor pre code {
+  background: none;
+  padding: 0;
+}
+
+/* MathLive component overrides - Hide unnecessary UI elements */
+:global(math-field)::part(virtual-keyboard-toggle) {
+  display: none;
+}
+
+:global(math-field)::part(menu-toggle) {
+  display: none;
+}
+
+:global(math-field)::part(content) {
+  background: transparent !important;
+}
+
+:global(math-field)::part(container) {
+  background: transparent !important;
+}
+
+:global(math-field)::part(field) {
+  background: transparent !important;
+}
+
+/* MathLive CSS variables override - Fix gray background issue */
+:global(math-field) {
+  --contains-highlight-background-color: transparent !important;
+  --highlight-background-color: transparent !important;
+  --selection-background-color: rgba(59, 130, 246, 0.2) !important;
+  --selection-background-color-focused: rgba(59, 130, 246, 0.3) !important;
+  --caret-color: #3b82f6 !important;
+  --text-color: inherit !important;
+  --background-color: transparent !important;
+  --primary-color: #3b82f6 !important;
+}
+
+/* More specific MathLive overrides */
+:global(.ML__container) {
+  background: transparent !important;
+}
+
+:global(.ML__content) {
+  background: transparent !important;
+}
+
+:global(.ML__base) {
+  background: transparent !important;
+}
+
+:global(.ML__highlight) {
+  background: transparent !important;
+}
+
+:global(.ML__contains-highlight) {
+  background: transparent !important;
+}
+
+/* Text alignment styles */
+.editor p[style*="text-align: left"],
+.editor h1[style*="text-align: left"],
+.editor h2[style*="text-align: left"] {
+  text-align: left !important;
+  direction: ltr !important;
+}
+
+.editor p[style*="text-align: center"],
+.editor h1[style*="text-align: center"],
+.editor h2[style*="text-align: center"] {
+  text-align: center !important;
+}
+
+.editor p[style*="text-align: right"],
+.editor h1[style*="text-align: right"],
+.editor h2[style*="text-align: right"] {
+  text-align: right !important;
+}
+
+.editor p[style*="text-align: justify"],
+.editor h1[style*="text-align: justify"],
+.editor h2[style*="text-align: justify"] {
+  text-align: justify !important;
+}
+
+.editor img {
+  width: 10rem;
+}
+
+/* Alternative approach using CSS classes (more maintainable) */
+.editor .text-left {
+  text-align: left;
+}
+
+.editor .text-center {
+  text-align: center;
+}
+
+.editor .text-right {
+  text-align: right;
+}
+
+.editor .text-justify {
+  text-align: justify;
+}
+
+/* toolbar */
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border-bottom: 1px solid #e2e8f0;
+  background: #ffffffe8;
+  border-radius: 8px 8px 0 0;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.group {
+  display: flex;
+  gap: 0.25rem;
+  position: relative;
+}
+
+.separator {
+  width: 1px;
+  height: 24px;
+  background: #e2e8f0;
+  margin: 0 0.25rem;
+}
+
+.toolbar button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid #e2e8f0;
+  background: white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-family: bold;
+  color: #4a5568;
+  transition: all 0.2s ease;
+}
+
+.toolbar button:hover {
+  background: #f1f5f9;
+  border-color: #cbd5e0;
+}
+
+.toolbar button:active {
+  transform: translateY(1px);
+}
+
+.toolbar button.active {
+  background: #3182ce26;
+  color: white;
+  border-color: #3182ce;
+}
+
+.toolbar button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.toolbar button:disabled:hover {
+  background: white;
+  border-color: #e2e8f0;
+  transform: none;
+}
+
+.shortcutsPanel {
+  position: absolute;
+  top: 2.5rem;
+  left: 0;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  /* max-height: 500px; */
+  z-index: 100;
+  overflow: hidden;
+}
+
+.shortcutsHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: #f7f5f5;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.shortcutsHeader h4 {
+  margin: 0;
+  font-size: 1rem;
+  font-family: bold;
+  color: #2d3748;
+}
+
+.closeShortcuts {
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+  color: #718096;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+
+.closeShortcuts:hover {
+  background: #e2e8f0;
+}
+
+.shortcutsList {
+  max-height: 350px;
+  overflow-y: auto;
+  padding: 0.5rem;
+}
+
+.shortcutItem {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  border-radius: 6px;
+  margin-bottom: 0.25rem;
+  align-items: center;
+}
+
+.shortcutItem:hover {
+  background: #e1e1e144;
+}
+
+.shortcutKey {
+  flex-shrink: 0;
+  min-width: 60px;
+}
+
+.shortcutKey kbd {
+  background: #2d3748;
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-family: "Courier New", monospace;
+  white-space: nowrap;
+}
+
+.shortcutInfo {
+  flex: 1;
+}
+
+.shortcutDescription {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #2d3748;
+  margin-bottom: 0.5rem;
+}
+
+.shortcutExample {
+  font-size: 0.75rem;
+  color: #718096;
+}
+
+.shortcutsFooter {
+  padding: 0.3rem 1rem;
+  background: #f7f5f5;
+  border-top: 1px solid #e2e8f0;
+  font-size: 0.75rem;
+  color: #747474;
+  line-height: 1.3;
+}
+
+.shortcutsFooter p {
+  margin: 0.5rem 0;
+}
+
+.formulaHint {
+  display: flex;
+  align-items: center;
+}
+
+.shortcutsFooter strong {
+  color: #242c39;
+  font-family: bold;
+}
+
+/* math node view */
+.mathNode {
+  position: relative;
+  display: inline-block;
+  margin: 0 2px;
+  padding: 2px 4px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.mathNode:hover {
+  background: #f0f9ff;
+}
+
+.mathNode.selected {
+  background: #dbeafe;
+  outline: 2px solid #3b82f6;
+  outline-offset: 1px;
+}
+
+.mathNode.editing {
+  background: #fef3c7;
+  outline: 2px solid #f59e0b;
+  outline-offset: 1px;
+}
+
+.mathContainer {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1f2937;
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 10;
+  margin-bottom: 4px;
+}
+
+.tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 4px solid transparent;
+  border-top-color: #1f2937;
+}
+
+/* Enhanced MathLive custom styling */
+.mathNode math-field {
+  border: none !important;
+  outline: none !important;
+  background: transparent !important;
+  font-size: 16px !important;
+  display: inline-block !important;
+  vertical-align: middle !important;
+
+  /* Override MathLive CSS variables directly on the element */
+  --contains-highlight-background-color: transparent !important;
+  --highlight-background-color: transparent !important;
+  --selection-background-color: rgba(59, 130, 246, 0.2) !important;
+  --selection-background-color-focused: rgba(59, 130, 246, 0.3) !important;
+  --caret-color: #3b82f6 !important;
+}
+
+.mathNode.editing math-field {
+  background: rgba(245, 158, 11, 0.1) !important;
+
+  /* Ensure editing state also has clean background */
+  --contains-highlight-background-color: transparent !important;
+  --highlight-background-color: transparent !important;
+}
+
+.imageEditor {
+  width: 2rem;
+  height: 2rem;
+}

@@ -1,0 +1,204 @@
+/* ===== Shared cells ===== */
+.thumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: var(--rg-radius-sm);
+  background-color: var(--brand-cream-tint);
+  color: var(--rg-text-soft);
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.thumbImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.productCell {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.productTitle {
+  font-family: "bold";
+  font-size: 0.9rem;
+  color: var(--rg-text);
+}
+
+.priceCell {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.priceNow {
+  font-family: "bold";
+  font-size: 0.85rem;
+  color: var(--rg-text);
+}
+
+.priceOld {
+  font-family: "regular";
+  font-size: 0.72rem;
+  color: var(--rg-text-soft);
+  text-decoration: line-through;
+}
+
+.stock {
+  font-family: "regular";
+  font-size: 0.82rem;
+  color: var(--rg-text-muted);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.actionBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.1rem;
+  height: 2.1rem;
+  border-radius: 50%;
+  color: var(--rg-text-muted);
+  cursor: pointer;
+  transition:
+    background-color 0.16s ease,
+    color 0.16s ease;
+}
+
+.actionBtn:hover {
+  background-color: var(--rg-surface-muted);
+  color: var(--rg-primary);
+}
+
+.actionBtn.danger:hover {
+  background-color: var(--danger);
+  color: var(--error);
+}
+
+/* ===== Desktop table ===== */
+.tableWrap {
+  width: 100%;
+  overflow-x: auto;
+  background-color: var(--rg-surface);
+  border: 1px solid var(--rg-border);
+  border-radius: var(--rg-radius);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 720px;
+}
+
+.table thead th {
+  text-align: right;
+  font-family: "regular";
+  font-size: 0.78rem;
+  color: var(--rg-text-soft);
+  padding: 0.9rem 1.1rem;
+  border-bottom: 1px solid var(--rg-border);
+  white-space: nowrap;
+}
+
+.actionsHead {
+  text-align: left;
+}
+
+.table tbody td {
+  padding: 0.85rem 1.1rem;
+  border-bottom: 1px solid var(--rg-border);
+  font-family: "regular";
+  font-size: 0.85rem;
+  color: var(--rg-text-muted);
+  vertical-align: middle;
+}
+
+.table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.table tbody tr {
+  transition: background-color 0.14s ease;
+}
+
+.table tbody tr:hover {
+  background-color: var(--rg-surface-muted);
+}
+
+.table tbody td:last-child .actions {
+  justify-content: flex-end;
+}
+
+/* ===== Mobile cards ===== */
+.cards {
+  display: none;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.card {
+  background-color: var(--rg-surface);
+  border: 1px solid var(--rg-border);
+  border-radius: var(--rg-radius);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.cardTop {
+  display: flex;
+  gap: 0.85rem;
+}
+
+.cardTop .thumb {
+  width: 3.75rem;
+  height: 3.75rem;
+}
+
+.cardInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  min-width: 0;
+}
+
+.cardMeta {
+  font-family: "regular";
+  font-size: 0.78rem;
+  color: var(--rg-text-soft);
+}
+
+.cardBottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--rg-border);
+}
+
+.cardBottomInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+@media screen and (max-width: 760px) {
+  .tableWrap {
+    display: none;
+  }
+  .cards {
+    display: flex;
+  }
+}

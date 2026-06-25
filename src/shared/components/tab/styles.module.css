@@ -1,0 +1,123 @@
+.tabChanger {
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 8px;
+  height: fit-content;
+  /* border: 1px solid #d1cfcf76; */
+}
+
+.tabHeader {
+  background: #fff;
+  padding: 0;
+  border-radius: 8px;
+  /* overflow: hidden; */
+  border: 1px solid #efefef;
+  max-height: 4rem;
+}
+
+.tabHeader.chips {
+  border-radius: 50px;
+  background: #f5f5f5;
+  padding: 4px;
+}
+
+.tabList {
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  position: relative;
+}
+
+.tabList.chips {
+  display: flex;
+  justify-content: space-between;
+  overflow-x: initial;
+}
+
+.tabList::-webkit-scrollbar {
+  display: none;
+}
+
+.tabButton {
+  background: transparent;
+  border: none;
+  padding: 16px 24px;
+  font-size: 14px;
+  color: #8393a9;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  white-space: nowrap;
+  border-bottom: 3px solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.tabButton.chips {
+  z-index: 9;
+  text-align: center;
+  padding: 10px 10px;
+}
+
+.tabButton.chips_small {
+  z-index: 9;
+  text-align: center;
+  padding: 8px 10px;
+}
+.tabButton.active.chips {
+  z-index: 9;
+}
+.tabButton.chips:hover {
+  z-index: 9;
+  background: transparent;
+}
+.tabButton.active {
+  color: #000 !important;
+}
+
+.tabButton:hover {
+  background: #f0f1f395;
+  color: #4d596b;
+}
+
+.tabUnderline {
+  position: absolute;
+  bottom: 0;
+  height: 3px;
+  background-color: #000000;
+  transition:
+    transform 0.3s ease,
+    width 0.3s ease;
+  border-radius: 20px 20px 0 0;
+}
+
+.tabUnderline.chips {
+  border-radius: 50px;
+  height: 100%;
+  background-color: #ffffff;
+  box-shadow: 0 0 15px #00000011;
+}
+
+.tabContent {
+}
+
+.tabPanel {
+  padding: 0.5rem 0;
+  animation: fadeIn 0.3s ease-in-out;
+  flex: 1;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

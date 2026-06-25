@@ -1,0 +1,31 @@
+.logoutModal {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.logoutModalContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 1rem;
+}
+.confirmParagraph {
+  font-size: 1.1rem;
+
+  color: var(--text-tertiary);
+  line-height: 1.45rem;
+  text-align: center;
+}
+.modalBtnDelete {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.iconcontainer {
+  background-color: rgba(255, 149, 149, 0.091);
+  padding: 0.8rem;
+  border-radius: 8px;
+}

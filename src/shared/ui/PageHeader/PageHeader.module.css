@@ -1,0 +1,39 @@
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.titleBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.title {
+  font-family: "bold";
+  font-size: var(--rg-fs-2xl);
+  color: var(--rg-text);
+  letter-spacing: -0.01em;
+}
+
+.description {
+  font-family: "regular";
+  font-size: var(--rg-fs-md);
+  color: var(--rg-text-muted);
+  line-height: 1.6;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+@media screen and (max-width: 600px) {
+  .actions {
+    width: 100%;
+  }
+}

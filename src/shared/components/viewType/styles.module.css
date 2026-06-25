@@ -1,0 +1,31 @@
+.viewType {
+  width: 100%;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.viewTypeItem {
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  justify-content: center;
+  gap: 0.3rem;
+  border: 1px solid var(--border-secondary);
+  border-radius: 8px;
+  background-color: #fff;
+  padding: 0.5rem 0;
+  font-size: 0.8rem;
+  width: 4.5rem;
+  transition: all 0.2s;
+  color: var(--text-tertiary);
+}
+
+.viewTypeItem:active {
+    transform: scale(0.95);
+}
+
+.viewTypeItem.active {
+  border: 1px solid var(--primary);
+  transition: all 0.2s;
+  color: var(--primary);
+}

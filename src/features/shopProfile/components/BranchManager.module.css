@@ -1,0 +1,113 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.title {
+  font-family: "bold";
+  font-size: 1.05rem;
+  color: var(--rg-text);
+}
+
+.subtitle {
+  font-family: "regular";
+  font-size: 0.85rem;
+  color: var(--rg-text-muted);
+  margin-top: 0.25rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.cardHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.cardTitleBlock {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.cardName {
+  font-family: "bold";
+  font-size: 0.95rem;
+  color: var(--rg-text);
+}
+
+.cardActions {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.iconBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  color: var(--rg-text-muted);
+  cursor: pointer;
+  transition:
+    background-color 0.16s ease,
+    color 0.16s ease;
+}
+
+.iconBtn:hover {
+  background-color: var(--rg-surface-muted);
+  color: var(--rg-primary);
+}
+
+.iconBtn.danger:hover {
+  background-color: var(--danger);
+  color: var(--error);
+}
+
+.cardRows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: "regular";
+  font-size: 0.83rem;
+  color: var(--rg-text-muted);
+  line-height: 1.6;
+}
+
+.row svg {
+  flex-shrink: 0;
+  color: var(--rg-text-soft);
+}
+
+@media screen and (max-width: 560px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,10 @@
+.image {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    vertical-align: middle;
+  }
+  
+  .loaded {
+    opacity: 1;
+    vertical-align: middle;
+  }

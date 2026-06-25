@@ -1,0 +1,33 @@
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.search {
+  flex: 1;
+  min-width: 14rem;
+}
+
+.selects {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.selects > * {
+  width: 12rem;
+}
+
+@media screen and (max-width: 760px) {
+  .search {
+    flex: 1 1 100%;
+  }
+  .selects {
+    flex: 1 1 100%;
+  }
+  .selects > * {
+    flex: 1;
+    width: auto;
+  }
+}

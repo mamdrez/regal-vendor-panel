@@ -1,0 +1,108 @@
+:root {
+  --main: #fff;
+  --content-bg: #fafafa;
+  --primary: #000000;
+  --secondary: #edecea;
+  --bg: #f7f7f5;
+  --tertiary: #f7f7f5;
+  --success: #048848;
+  --word: #007bff;
+  --warn: #ffc043;
+  --gold: #e49e15;
+  --danger: #ffefed;
+  --error: #e11900;
+  --error-secondary: #ff959525;
+  --text-primary: #000000;
+  --i-text-secondary: #535454;
+  --border-primary: #000000;
+  --border-secondary: #efefef;
+  --border-tertiary: #e2e2e2;
+  --active-item: #f5f7f7;
+  --title-primary: #000;
+  --title-secondary: #535454;
+  --title-tertiary: #afafaf;
+  --text-tertiary: #868686;
+  --border-color: #e1e3e3;
+  --background: #eaeded;
+  --icon-close: #b1b2b2;
+  --icon-bg: #323333;
+  --shimmer-bg: #eaeded;
+  --icon-bg-2: #f3f4f6;
+  --icon-bg-3: #f8f8f8;
+  --excel-bg: #00980532;
+
+  /* ===== Regal brand palette ===== */
+  --brand-burgundy: #5c0425;
+  --brand-burgundy-deep: #4b0420;
+  --brand-burgundy-hover: #6b0c30;
+  --brand-green: #2c2a26;
+  /* pink kept only for the logo mark; UI accents are warm neutrals */
+  --brand-pink: #f6c9d6;
+  --brand-pink-soft: #f2ece2; /* champagne */
+  --brand-pink-tint: #f4f1ea; /* champagne soft */
+  --brand-cream: #efe7d8;
+  --brand-cream-tint: #faf8f3;
+  --brand-gray: #d8d5cf;
+
+  /* ===== Semantic tokens — refined neutral system ===== */
+  /* surfaces */
+  --rg-bg: #f7f6f3; /* workspace background */
+  --rg-surface: #ffffff;
+  --rg-surface-muted: #f7f5f2;
+
+  /* text */
+  --rg-text: #1b1a18; /* charcoal */
+  --rg-text-muted: #6b6760;
+  --rg-text-soft: #a6a098;
+
+  /* borders */
+  --rg-border: #eceae5;
+  --rg-border-strong: #e0ded7;
+
+  /* single primary action color (the brand burgundy) */
+  --rg-primary: var(--brand-burgundy);
+  --rg-primary-deep: var(--brand-burgundy-deep);
+  --rg-primary-hover: var(--brand-burgundy-hover);
+  --rg-on-primary: #ffffff;
+  --rg-primary-tint: #f4ebee; /* subtle burgundy wash */
+
+  /* warm neutral accents + selection */
+  --rg-accent: var(--brand-pink-soft);
+  --rg-accent-soft: var(--brand-pink-tint);
+  --rg-selected: #f1efe9; /* calm neutral active/selected pill */
+
+  --rg-ring: rgba(27, 26, 24, 0.07);
+
+  /* subtle shadows — borders do most of the work */
+  --rg-shadow-sm: 0 1px 2px rgba(20, 18, 16, 0.04);
+  --rg-shadow-md: 0 4px 14px rgba(20, 18, 16, 0.06);
+  --rg-shadow-lg: 0 14px 40px rgba(20, 18, 16, 0.09);
+
+  /* radius */
+  --rg-radius-sm: 10px;
+  --rg-radius: 14px;
+  --rg-radius-lg: 18px;
+  --rg-radius-pill: 50px;
+
+  /* spacing scale */
+  --rg-space-1: 0.25rem;
+  --rg-space-2: 0.5rem;
+  --rg-space-3: 0.75rem;
+  --rg-space-4: 1rem;
+  --rg-space-5: 1.5rem;
+  --rg-space-6: 2rem;
+  --rg-space-8: 3rem;
+
+  /* font sizes */
+  --rg-fs-xs: 0.75rem;
+  --rg-fs-sm: 0.85rem;
+  --rg-fs-md: 0.95rem;
+  --rg-fs-lg: 1.1rem;
+  --rg-fs-xl: 1.4rem;
+  --rg-fs-2xl: 1.75rem;
+
+  /* layout */
+  --rg-sidebar-w: 16rem;
+  --rg-header-h: 4.5rem;
+  --rg-content-max: 80rem;
+}

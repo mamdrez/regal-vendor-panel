@@ -1,0 +1,392 @@
+{
+  "GAM_BE_GAM": {
+    "title": "گام به گام",
+    "colorCircle": "#000000",
+    "bgColor": "#f0f0f0"
+  },
+  "BOOKLET": {
+    "title": "جزوه",
+    "colorCircle": "#000000",
+    "bgColor": "#f0f0f0"
+  },
+  "QUESTIONS": {
+    "title": "سوال",
+    "colorCircle": "#000000",
+    "bgColor": "#f0f0f0"
+  },
+  "VIDEO": {
+    "title": "ویدئو",
+    "colorCircle": "#000000",
+    "bgColor": "#f0f0f0"
+  },
+  "EXAM": {
+    "title": "آزمون",
+    "colorCircle": "#000000",
+    "bgColor": "#f0f0f0"
+  },
+  "Heater": {
+    "title": "بخاری",
+    "colorCircle": "#000000",
+    "bgColor": "#f0f0f0"
+  },
+  "BoilerRoom": {
+    "title": "موتورخانه",
+    "colorCircle": "#000000",
+    "bgColor": "#f0f0f0"
+  },
+  "ElectricHeater": {
+    "title": "بخاری برقی",
+    "colorCircle": "#000000",
+    "bgColor": "#f0f0f0"
+  },
+  "Chiller": {
+    "title": "چیلر",
+    "colorCircle": "#000000",
+    "bgColor": "#f0f0f0"
+  },
+  "Split": {
+    "title": "اسپیلت",
+    "colorCircle": "#000000",
+    "bgColor": "#f0f0f0"
+  },
+  "Fireplace": {
+    "title": "شومینه",
+    "colorCircle": "#000000",
+    "bgColor": "#f0f0f0"
+  },
+  "Others": {
+    "title": "سایر",
+    "colorCircle": "#000000",
+    "bgColor": "#f0f0f0"
+  },
+  "NotSelected": {
+    "title": "انتخاب نشده",
+    "colorCircle": "#000000",
+    "bgColor": "#f0f0f0"
+  },
+  "OtherCases": {
+    "title": "موارد دیگر",
+    "colorCircle": "#000000",
+    "bgColor": "#f0f0f0"
+  },
+  "Medical": {
+    "title": "پزشکی",
+    "colorCircle": "#000000",
+    "bgColor": "#f0f0f0"
+  },
+  "Sport": {
+    "title": "ورزشی",
+    "colorCircle": "#000000",
+    "bgColor": "#f0f0f0"
+  },
+  "Other": {
+    "title": "سایر",
+    "colorCircle": "#000000",
+    "bgColor": "#f0f0f0"
+  },
+  "total": {
+    "title": "مجموع",
+    "colorCircle": "#000000",
+    "bgColor": "#f0f0f0"
+  },
+  "FINALIZATION": {
+    "title": "نهایی شدن",
+    "colorCircle": "#4CAF50",
+    "bgColor": "#E8F5E9"
+  },
+  "HIGH": {
+    "title": "ضروری",
+    "colorCircle": "#F44336",
+    "bgColor": "#FFEBEE"
+  },
+  "MEDIUM": {
+    "title": "مهم",
+    "colorCircle": "#FF9800",
+    "bgColor": "#FFF3E0"
+  },
+  "LOW": {
+    "title": "عادی",
+    "colorCircle": "#009688",
+    "bgColor": "#E0F2F1"
+  },
+  "ACTIVE": {
+    "title": "فعال",
+    "colorCircle": "#4CAF50",
+    "bgColor": "#E8F5E9"
+  },
+  "active": {
+    "title": "فعال",
+    "colorCircle": "#4CAF50",
+    "bgColor": "#E8F5E9"
+  },
+  "DEACTIVE": {
+    "title": "غیرفعال",
+    "colorCircle": "#F44336",
+    "bgColor": "#FFEBEE"
+  },
+  "true": {
+    "title": "فعال",
+    "colorCircle": "#4CAF50",
+    "bgColor": "#E8F5E9"
+  },
+  "false": {
+    "title": "غیرفعال",
+    "colorCircle": "#F44336",
+    "bgColor": "#FFEBEE"
+  },
+  "1": {
+    "title": "فعال",
+    "colorCircle": "#4CAF50",
+    "bgColor": "#E8F5E9"
+  },
+  "0": {
+    "title": "غیرفعال",
+    "colorCircle": "#F44336",
+    "bgColor": "#FFEBEE"
+  },
+  "Winning": {
+    "title": "برنده شدن",
+    "colorCircle": "#009688",
+    "bgColor": "#E0F2F1"
+  },
+  "ConditionsApproval": {
+    "title": "تایید شرایط",
+    "colorCircle": "#FF9800",
+    "bgColor": "#FFF3E0"
+  },
+  "ApprovalBySupervisor": {
+    "title": "تایید توسط ناظر",
+    "colorCircle": "#4CAF50",
+    "bgColor": "#E8F5E9"
+  },
+  "PrizeDelivery": {
+    "title": "ارسال جایزه",
+    "colorCircle": "#F44336",
+    "bgColor": "#FFEBEE"
+  },
+  "InstallationAndSetup": {
+    "title": "نصب و راه اندازی",
+    "colorCircle": "#4CAF50",
+    "bgColor": "#E8F5E9"
+  },
+  "draft": {
+    "title": "پیش نویس",
+    "colorCircle": "#FF9800",
+    "bgColor": "#FFF3E0"
+  },
+  "marathon": {
+    "title": "ماراتن",
+    "colorCircle": "#000000",
+    "bgColor": "#f0f0f0"
+  },
+  "storyline": {
+    "title": "خط داستانی",
+    "colorCircle": "#000000",
+    "bgColor": "#f0f0f0"
+  },
+  "coursely": {
+    "title": "رقابتی",
+    "colorCircle": "#000000",
+    "bgColor": "#f0f0f0"
+  },
+  "questionly": {
+    "title": "سوالی",
+    "colorCircle": "#000000",
+    "bgColor": "#f0f0f0"
+  },
+  "waiting": {
+    "title": "در انتظار",
+     "colorCircle": "#FF9800",
+    "bgColor": "#FFF3E0"
+  },
+   "pending": {
+    "title": "در حال بررسی",
+    "colorCircle": "#FF9800",
+    "bgColor": "#FFF3E0"
+  },
+  "waiting_for_payment": {
+    "title": "در حال بررسی",
+    "colorCircle": "#FF9800",
+    "bgColor": "#FFF3E0"
+  },
+  "pending_auth": {
+    "title": "در انتظار احراز هویت",
+    "colorCircle": "#8f2177",
+    "bgColor": "#f2e0ee"
+  },
+  "approved": {
+    "title": "در انتظار پرداخت",
+    "colorCircle": "#0074c1",
+    "bgColor": "#97c3e1"
+  },
+  "payed": {
+    "title": "پرداخت شده",
+    "colorCircle": "#0a8128",
+    "bgColor": "#cfffdb"
+  },
+  "canceled": {
+    "title": "لغو شده",
+    "colorCircle": "#F44336",
+    "bgColor": "#FFEBEE"
+  },
+  "started" : {
+   "title": "شروع شده",
+   "colorCircle": "#0a8128",
+    "bgColor": "#cfffdb"
+  },
+  "finished" : {
+   "title": "پایان یافته",
+   "colorCircle": "#F44336",
+   "bgColor": "#FFEBEE"
+  },
+  "admin" :{
+    "title": "مدیر سیستم",
+    "colorCircle": "#000000",
+    "bgColor": "#f0f0f0"
+  },
+   "coin" :{
+    "title": "سکه",
+    "colorCircle": "#000000",
+    "bgColor": "#f0f0f0"
+  },
+   "diamond" :{
+    "title": "الماس",
+    "colorCircle": "#000000",
+    "bgColor": "#f0f0f0"
+  },
+  "cup" :{
+    "title": "کاپ",
+    "colorCircle": "#000000",
+    "bgColor": "#f0f0f0"
+  },
+  "xp" :{
+    "title": "xp",
+    "colorCircle": "#000000",
+    "bgColor": "#f0f0f0"
+  },
+  "cash" :{
+    "title": "پول نقد",
+    "colorCircle": "#000000",
+    "bgColor": "#f0f0f0"
+  },
+  "ai_generated" : {
+    "title": "هوش مصنوعی",
+    "colorCircle": "#000000",
+    "bgColor": "#f0f0f0"
+  },
+  "normal" : {
+    "title": "عادی",
+    "colorCircle": "#000000",
+    "bgColor": "#f0f0f0"
+  },
+  "teacher" : {
+    "title": "معلم",
+    "colorCircle": "#000000",
+    "bgColor": "#f0f0f0"
+  },
+  "student" : {
+    "title": "دانش آموز",
+    "colorCircle": "#000000",
+    "bgColor": "#f0f0f0"
+  },
+  "internal" : {
+    "title": "داخل اپ",
+    "colorCircle": "#000000",
+    "bgColor": "#f0f0f0"
+  },
+  "external" : {
+    "title": "خارج اپ",
+    "colorCircle": "#000000",
+    "bgColor": "#f0f0f0"
+  },
+  "inactive" : {
+    "title": "غیرفعال",
+    "colorCircle": "#F44336",
+    "bgColor": "#FFEBEE"
+  },
+  "wrong_answer" : {
+    "title": "جواب غلط",
+    "colorCircle": "#000000",
+    "bgColor": "#f0f0f0"
+  },
+    "inappropriate_words" : {
+    "title": "کلمات نامناسب",
+    "colorCircle": "#000000",
+    "bgColor": "#f0f0f0"
+  },
+    "wrong_subject" : {
+    "title":"موضوع اشتباه",
+    "colorCircle": "#000000",
+    "bgColor": "#f0f0f0"
+  },
+    "not_clear" : {
+    "title": "واضح نبودن سوال",
+    "colorCircle": "#000000",
+    "bgColor": "#f0f0f0"
+  },
+  "repetitive_question" : {
+    "title": "سوال تکراری",
+    "colorCircle": "#000000",
+    "bgColor": "#f0f0f0"
+  },
+  "options_problem" : {
+    "title":  "مشکل گزینه ها",
+    "colorCircle": "#000000",
+    "bgColor": "#f0f0f0"
+  },
+  "short_time" : {
+    "title": "زمان کوتاه",
+    "colorCircle": "#000000",
+    "bgColor": "#f0f0f0"
+  },
+  "removed" : {
+    "title": "حذف از کتاب",
+    "colorCircle": "#000000",
+    "bgColor": "#f0f0f0"
+  },
+  "wrong_spelling" : {
+    "title":"غلط املایی/نگارشی",
+    "colorCircle": "#000000",
+    "bgColor": "#f0f0f0"
+  },
+  "religious_problem" : {
+    "title": "مشکل مذهبی",
+    "colorCircle": "#000000",
+    "bgColor": "#f0f0f0"
+  },
+  "non_compliance" : {
+    "title":  "عدم مطابقت با قوانین جمهوری اسلامی",
+    "colorCircle": "#000000",
+    "bgColor": "#f0f0f0"
+  },
+  "other_cases" : {
+    "title": "سایر موارد",
+    "colorCircle": "#000000",
+    "bgColor": "#f0f0f0"
+  },
+  "fixed" : {
+    "title": "اصلاح شده",
+    "colorCircle": "#000000",
+    "bgColor": "#f0f0f0"
+  },
+  "wrongReport" : {
+    "title": "گزارش نادرست",
+    "colorCircle": "#F44336",
+    "bgColor": "#FFEBEE"
+  },
+  "waiting_admin" : {
+   "title": "در انتظار تایید",
+    "colorCircle": "#FF9800",
+    "bgColor": "#FFF3E0"
+  },
+  "rejected" : {
+    "title": "رد شده",
+    "colorCircle": "#F44336",
+    "bgColor": "#FFEBEE"
+  },
+  "rejected_ai" : {
+    "title": "رد شده ai",
+    "colorCircle": "#F44336",
+    "bgColor": "#FFEBEE"
+  }
+}

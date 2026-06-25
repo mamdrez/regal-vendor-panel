@@ -1,0 +1,33 @@
+.question img {
+  width: 5rem;
+}
+
+/* MathML rendered as plain HTML (used for Persian/Arabic content that
+   MathJax would otherwise split letter-by-letter). */
+.mathInline {
+  display: inline-flex;
+  align-items: center;
+}
+
+.mfrac {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  vertical-align: middle;
+  text-align: center;
+  margin: 0 0.2em;
+}
+
+.mfracNum {
+  padding: 0 0.4em 0.1em;
+}
+
+.mfracDen {
+  padding: 0.1em 0.4em 0;
+  border-top: 1px solid currentColor;
+}
+
+.msqrtInner {
+  border-top: 1px solid currentColor;
+  padding: 0 0.2em;
+}

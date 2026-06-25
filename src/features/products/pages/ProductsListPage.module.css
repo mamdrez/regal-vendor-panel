@@ -1,0 +1,16 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.filtersCard {
+  width: 100%;
+}
+
+.confirmText {
+  font-family: "regular";
+  font-size: 0.92rem;
+  line-height: 1.9;
+  color: var(--rg-text-muted);
+}

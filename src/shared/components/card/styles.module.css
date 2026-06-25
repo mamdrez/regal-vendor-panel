@@ -1,0 +1,61 @@
+.tagCard {
+  width: 14rem;
+  border: 1px solid #efefef;
+  background: #fff;
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: relative;
+}
+
+.tagCardItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.tagCardItem > span {
+  font-size: 0.8rem;
+  color: var(--title-tertiary);
+}
+
+.tagCardName {
+  font-size: 1.1rem;
+}
+
+.tagCardEdit {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  flex-direction: row;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.tagCardItemColor {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.tagCardItemColor > span {
+  font-size: 0.8rem;
+  color: var(--title-tertiary);
+}
+.tagCardColor {
+  width: 4rem;
+  height: 1.5rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+}
+
+[class^="i-Write"] {
+padding-top: 0.12rem;
+}

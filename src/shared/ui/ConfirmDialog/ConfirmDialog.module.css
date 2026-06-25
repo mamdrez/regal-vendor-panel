@@ -1,0 +1,6 @@
+.message {
+  font-family: "regular";
+  font-size: var(--rg-fs-md);
+  line-height: 1.9;
+  color: var(--rg-text-muted);
+}

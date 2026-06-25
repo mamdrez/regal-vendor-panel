@@ -1,0 +1,75 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.title {
+  font-family: "bold";
+  font-size: 0.92rem;
+  color: var(--rg-text);
+}
+
+.empty {
+  font-family: "regular";
+  font-size: 0.85rem;
+  color: var(--rg-text-soft);
+  background-color: var(--rg-surface-muted);
+  border: 1px dashed var(--rg-border-strong);
+  border-radius: var(--rg-radius-sm);
+  padding: 0.9rem 1rem;
+  line-height: 1.7;
+}
+
+.rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.4fr 0.9fr auto;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.remove {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50%;
+  color: var(--rg-text-muted);
+  cursor: pointer;
+  transition:
+    background-color 0.16s ease,
+    color 0.16s ease;
+  flex-shrink: 0;
+}
+
+.remove:hover {
+  background-color: var(--danger);
+  color: var(--error);
+}
+
+@media screen and (max-width: 720px) {
+  .row {
+    grid-template-columns: 1fr 1fr auto;
+    grid-template-areas:
+      "color size remove"
+      "sku sku remove"
+      "stock stock remove";
+    padding: 0.85rem;
+    background-color: var(--rg-surface-muted);
+    border-radius: var(--rg-radius-sm);
+  }
+}

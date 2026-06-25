@@ -1,0 +1,84 @@
+.loadingPage {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loadingDot {
+  width: 90px;
+  height: 90px;
+}
+.loadingOverPage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #ffffff00;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.loadingScreen {
+  width: 8rem;
+  height: 8rem;
+}
+.loadingFetchContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.loadingFetch {
+  width: 5rem;
+  height: 5rem;
+}
+
+.loadingLotteryContainer {
+  width: 20rem;
+  height: 20rem;
+}
+
+.LotteryFetch {
+  width: 100%;
+  height: 100%;
+}
+
+/* loading circle */
+.loadingCircle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 2rem;
+  height: 2rem;
+}
+
+.loadingSpinner {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  animation: spin 1s ease-in-out infinite;
+  border: 5px solid rgba(151, 132, 132, 0.169);
+}
+.primary {
+  border-top-color: #ebd90e !important;
+}
+.secondary {
+  border-top-color: #006aff !important;
+}
+.tertiary {
+  border-top-color: #ffffff !important;
+}
+.loadingMessage {
+  font-size: 16px;
+  color: #666;
+  margin: 0;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

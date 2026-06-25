@@ -1,0 +1,131 @@
+.container {
+  width: 100%;
+  /* max-width: 400px; */
+  margin-bottom: 10px;
+}
+
+.uploaderBox {
+  position: relative;
+  width: 100%;
+  min-height: 200;
+  border: 1px dashed #e2e8f0;
+  border-radius: 8px;
+  background-color: #f8fafc;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  margin-bottom: 0.25rem;
+}
+.uploaderBoxError {
+  position: relative;
+  width: 100%;
+  min-height: 200;
+  border: 1px dashed #f1998e;
+  border-radius: 8px;
+  background-color: #ffefed ;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  margin-bottom: 0.25rem;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.uploaderBox:hover {
+  border-color: #94a3b8;
+  background-color: #f1f5f9;
+}
+
+.dragging {
+  border-color: #60a5fa;
+  background-color: #eff6ff;
+}
+
+.hasPreview {
+  cursor: default;
+}
+
+.fileInput {
+  display: none;
+}
+
+.placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  color: #64748b;
+}
+
+.uploadIcon {
+  color: #94a3b8;
+}
+
+.uploadText {
+  text-align: center;
+  font-size: 1rem;
+}
+
+.uploadSubtext {
+  color: #94a3b8;
+  font-size: 0.875rem;
+  margin-top: 4px;
+}
+
+.supportedFormats {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  color: #94a3b8;
+  margin-top: 8px;
+}
+
+.previewContainer {
+  position:relative;
+  width: 100%;
+  height: 100%;
+  max-width: 200px;
+}
+
+.preview {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.removeButton {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.removeButton:hover {
+  background-color: #dc2626;
+}
+.errorMessageContainer {
+  height: 1rem;
+}
+.errorMessage {
+  width: 100%;
+  color: #dc2626;
+  font-size: 0.8rem;
+  font-size: 0.7rem;
+}

@@ -1,0 +1,92 @@
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.label {
+  font-family: "regular";
+  font-size: 0.85rem;
+  color: var(--rg-text-muted);
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.tile,
+.dropzone {
+  position: relative;
+  border-radius: var(--rg-radius);
+  overflow: hidden;
+}
+
+.square {
+  width: 7rem;
+  height: 7rem;
+}
+
+.wide {
+  width: 100%;
+  max-width: 22rem;
+  height: 8.5rem;
+}
+
+.preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.remove {
+  position: absolute;
+  top: 0.4rem;
+  left: 0.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  color: #ffffff;
+  background-color: rgba(28, 22, 20, 0.6);
+  cursor: pointer;
+  transition: background-color 0.16s ease;
+}
+
+.remove:hover {
+  background-color: var(--rg-primary);
+}
+
+.dropzone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  border: 1px dashed var(--rg-border-strong);
+  background-color: var(--rg-surface-muted);
+  color: var(--rg-text-muted);
+  cursor: pointer;
+  transition:
+    border-color 0.18s ease,
+    color 0.18s ease,
+    background-color 0.18s ease;
+}
+
+.dropzone:hover {
+  border-color: var(--rg-primary);
+  color: var(--rg-primary);
+  background-color: var(--brand-pink-tint);
+}
+
+.dropText {
+  font-family: "regular";
+  font-size: 0.75rem;
+}
+
+.input {
+  display: none;
+}

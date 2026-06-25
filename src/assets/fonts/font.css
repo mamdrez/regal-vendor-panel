@@ -1,0 +1,35 @@
+@font-face {
+  font-family: "normal";
+  font-style: normal;
+  font-weight: normal;
+  font-display: block;
+  src: url("./BonyadeKoodakFaNum-Medium.woff") format("truetype");
+}
+@font-face {
+  font-family: "bold";
+  font-style: normal;
+  font-weight: normal;
+  font-display: block;
+  src: url("./BonyadeKoodakFaNum-Bold.woff") format("truetype");
+}
+@font-face {
+  font-family: "thin";
+  font-style: normal;
+  font-weight: normal;
+  font-display: block;
+  src: url("./BonyadeKoodakFaNum-Regular.woff");
+}
+@font-face {
+  font-family: "regular";
+  font-style: normal;
+  font-weight: normal;
+  font-display: block;
+  src: url("./BonyadeKoodakFaNum-Regular.woff");
+}
+@font-face {
+  font-family: "black";
+  font-style: normal;
+  font-weight: normal;
+  font-display: block;
+  src: url("./BonyadeKoodakFaNum-Black.woff") format("truetype");
+}
